@@ -990,3 +990,4 @@ See [Change log](https://github.com/openwisp/openwisp-wifi-login-pages/blob/mast
 ### License
 
 See [LICENSE](https://github.com/openwisp/openwisp-wifi-login-pages/blob/master/LICENSE).
+# wifi-portal
