@@ -1,0 +1,50 @@
+{
+  "extends": [
+    "airbnb",
+    "prettier",
+    "prettier",
+    "jest-enzyme",
+    "plugin:jest/recommended"
+  ],
+  "parser": "babel-eslint",
+  "plugins": ["prettier", "jest"],
+  "parserOptions": {
+    "ecmaVersion": 2016,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "env": {
+    "es6": true,
+    "browser": true,
+    "node": true
+  },
+  "rules": {
+    "array-bracket-spacing": [2, "never"],
+    "eol-last": ["error", "always"],
+    "semi": [2, "always"],
+    "jsx-a11y/label-has-for": 0,
+    "react/prefer-stateless-function": [0],
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [".js", ".jsx"]
+      }
+    ],
+    "react/jsx-props-no-spreading": 0,
+    "react/forbid-prop-types": 0,
+    "react/sort-comp": [0],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": [
+          "**/*.test.js",
+          "**/*test-utils.js",
+          "**/jest.config.js",
+          "browser-test/utils.js"
+        ]
+      }
+    ]
+  }
+}

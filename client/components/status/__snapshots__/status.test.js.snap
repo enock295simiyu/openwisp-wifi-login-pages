@@ -1,0 +1,297 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Status /> rendering should render correctly 1`] = `
+<React.Fragment>
+  <InfoModal
+    active={false}
+    content={
+      <p
+        className="message"
+      >
+        Do you want to automatically log in the next time?
+      </p>
+    }
+    handleResponse={[Function]}
+    toggleModal={[Function]}
+  />
+  <div
+    className="container content"
+    id="status"
+  >
+    <div
+      className="inner"
+    >
+      <div
+        className="main-column"
+      >
+        <div
+          className="inner"
+        >
+          <p
+            className="status-content"
+          >
+            WiFi Login Successful!
+          </p>
+          <p
+            className="status-content"
+          >
+            You can now use the internet.
+          </p>
+          <p
+            className="status-content"
+          >
+            You may leave this page open in case you want to log out.
+          </p>
+          <p
+            className="status-content"
+          >
+            <label>
+              Status
+              :
+            </label>
+            <span>
+              Logged in
+            </span>
+          </p>
+          <div
+            className="row logout"
+          >
+            <input
+              className="button full"
+              onClick={[Function]}
+              type="button"
+              value="Logout"
+            />
+          </div>
+          <div
+            className="links row"
+          >
+            <Link
+              className="button full status-link"
+              to="/default/change-password/"
+            >
+              Change your password
+            </Link>
+          </div>
+        </div>
+      </div>
+      <Memo(Connect(Contact)) />
+    </div>
+  </div>
+  <div
+    className="flex-column"
+    id="sessions"
+  >
+    <loader
+      full={false}
+      small={true}
+    />
+  </div>
+  <React.Fragment>
+    <form
+      action="http://localhost/"
+      className="hidden"
+      id="cp-login-form"
+      method="post"
+      target="owisp-auth-iframe"
+    >
+      <input
+        name="auth_user"
+        readOnly={true}
+        type="text"
+        value=""
+      />
+      <input
+        name="auth_pass"
+        readOnly={true}
+        type="text"
+        value=""
+      />
+      <input
+        name="zone"
+        readOnly={true}
+        type="text"
+        value="zone_name"
+      />
+      <input
+        name="redirurl"
+        readOnly={true}
+        type="text"
+        value="http://localhost:8080/default/status"
+      />
+      <input
+        name="accept"
+        readOnly={true}
+        type="text"
+        value="accept"
+      />
+    </form>
+    
+  </React.Fragment>
+  <React.Fragment>
+    <form
+      action="http://localhost:8081"
+      className="hidden"
+      id="cp-logout-form"
+      method="post"
+      target="owisp-auth-logout-iframe"
+    >
+      <input
+        name="logout_id"
+        readOnly={true}
+        type="hidden"
+        value=""
+      />
+    </form>
+    <iframe
+      className="hidden"
+      name="owisp-auth-logout-iframe"
+      onLoad={[Function]}
+      title="owisp-auth-iframe"
+    />
+  </React.Fragment>
+</React.Fragment>
+`;
+
+exports[`<Status /> rendering with placeholder translation tags should render translation placeholder correctly 1`] = `
+<React.Fragment>
+  <InfoModal
+    active={false}
+    content={
+      <p
+        className="message"
+      >
+        LOGOUT_MODAL_CONTENT
+      </p>
+    }
+    handleResponse={[Function]}
+    toggleModal={[Function]}
+  />
+  <div
+    className="container content"
+    id="status"
+  >
+    <div
+      className="inner"
+    >
+      <div
+        className="main-column"
+      >
+        <div
+          className="inner"
+        >
+          <p
+            className="status-content"
+          >
+            STATUS_CONTENT
+          </p>
+          <p
+            className="status-content"
+          >
+            <label>
+              STATUS
+              :
+            </label>
+            <span>
+              LOGGED_IN
+            </span>
+          </p>
+          <div
+            className="row logout"
+          >
+            <input
+              className="button full"
+              onClick={[Function]}
+              type="button"
+              value="LOGOUT"
+            />
+          </div>
+          <div
+            className="links row"
+          >
+            <Link
+              className="button full status-link"
+              to="/default/change-password/"
+            >
+              Change your password
+            </Link>
+          </div>
+        </div>
+      </div>
+      <Memo(Connect(Contact)) />
+    </div>
+  </div>
+  <div
+    className="flex-column"
+    id="sessions"
+  >
+    <loader
+      full={false}
+      small={true}
+    />
+  </div>
+  <React.Fragment>
+    <form
+      action="http://localhost/"
+      className="hidden"
+      id="cp-login-form"
+      method="post"
+      target="owisp-auth-iframe"
+    >
+      <input
+        name="auth_user"
+        readOnly={true}
+        type="text"
+        value=""
+      />
+      <input
+        name="auth_pass"
+        readOnly={true}
+        type="text"
+        value=""
+      />
+      <input
+        name="zone"
+        readOnly={true}
+        type="text"
+        value="zone_name"
+      />
+      <input
+        name="redirurl"
+        readOnly={true}
+        type="text"
+        value="http://localhost:8080/default/status"
+      />
+      <input
+        name="accept"
+        readOnly={true}
+        type="text"
+        value="accept"
+      />
+    </form>
+    
+  </React.Fragment>
+  <React.Fragment>
+    <form
+      action="http://localhost:8081"
+      className="hidden"
+      id="cp-logout-form"
+      method="post"
+      target="owisp-auth-logout-iframe"
+    >
+      <input
+        name="logout_id"
+        readOnly={true}
+        type="hidden"
+        value=""
+      />
+    </form>
+    <iframe
+      className="hidden"
+      name="owisp-auth-logout-iframe"
+      onLoad={[Function]}
+      title="owisp-auth-iframe"
+    />
+  </React.Fragment>
+</React.Fragment>
+`;

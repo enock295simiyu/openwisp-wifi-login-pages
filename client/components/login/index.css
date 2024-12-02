@@ -1,0 +1,80 @@
+.register p {
+  margin-top: 0;
+  text-align: center;
+}
+.social-links {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.social-links p {
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+.social-links p:last-child {
+  margin-bottom: 10px;
+}
+a.social-link .inner {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  min-width: 200px;
+  justify-content: center;
+}
+a.social-link .icon {
+  width: auto;
+  height: 24px;
+}
+a.social-link .text {
+  line-height: 24px;
+  font-weight: bold;
+  margin-left: 20px;
+}
+div.remember-me {
+  margin-bottom: 0;
+}
+#login .intro,
+#login .ending,
+#login .pre-content {
+  width: auto;
+}
+.container.intro {
+  flex-grow: 0;
+}
+.remember-me input {
+  height: 16px;
+  width: 16px;
+  position: relative;
+  bottom: -2px;
+  margin-right: 7px;
+}
+@media screen and (min-width: 0px) and (max-width: 767px) {
+  #remember_me {
+    width: 25px;
+    height: 25px;
+    bottom: -6px;
+  }
+}
+
+#login {
+  background-color: transparent;
+}
+.button.full {
+  background: linear-gradient(135deg, #0f2027, #2c5364, #203a43); /* Gradient background */
+  color: white; /* Text color */
+  border: none; /* No border */
+  border-radius: 8px; /* Rounded corners */
+  padding: 12px 20px; /* Padding for size */
+  font-size: 16px; /* Modern font size */
+  font-weight: bold; /* Standout text */
+  text-transform: uppercase; /* LOGIN in uppercase */
+  cursor: pointer; /* Pointer cursor on hover */
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.4); /* Depth shadow */
+  transition: all 0.3s ease; /* Smooth hover animation */
+}
+
+.button.full:hover {
+  background: linear-gradient(135deg, #1c1c1c, #28313b, #485461); /* Hover gradient */
+  box-shadow: 0px 8px 20px rgba(0, 255, 128, 0.6); /* Glow effect */
+}

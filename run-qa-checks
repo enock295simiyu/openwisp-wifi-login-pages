@@ -1,0 +1,15 @@
+#!/bin/bash
+
+set -e
+
+yarn format:check
+yarn setup
+yarn lint
+
+openwisp-qa-check --skip-checkmigrations \
+                  --skip-checkmakemigrations \
+                  --skip-black \
+                  --skip-flake8 \
+                  --skip-isort \
+                  --skip-checkendline
+#nvm use v20.10.0

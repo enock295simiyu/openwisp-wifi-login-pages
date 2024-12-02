@@ -1,0 +1,61 @@
+/* Full container for centering */
+.centered-row-container {
+    display: flex-column;
+    
+    justify-content: center;
+    padding: 20px;
+    min-height: 100vh; /* Full height */
+    background: transparent; /* Subtle background color */
+  }
+  
+  /* Row containing the items */
+  .centered-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 items per row */
+    gap: 20px; /* Spacing between items */
+    max-width: 1200px;
+    width: 100%; /* Responsive to container */
+    padding: 10px;
+  }
+  
+  /* Individual item styling */
+  .centered-row-item {
+    backdrop-filter: blur(10px); /* Blur effect */
+    border-radius: 12px; /* Rounded corners */
+    padding: 16px;
+    text-align: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .centered-row-item:hover {
+    transform: translateY(-5px); /* Lift on hover */
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+  }
+  
+  .item-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0 0 10px 0;
+    color: #333;
+  }
+  
+  .item-description {
+    font-size: 1rem;
+    color: #444;
+    margin: 0;
+  }
+  
+  /* Responsive grid adjustments */
+  @media (max-width: 768px) {
+    .centered-row {
+      grid-template-columns: repeat(2, 1fr); /* 2 items per row on medium screens */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .centered-row {
+      grid-template-columns: 1fr; /* 1 item per row on small screens */
+    }
+  }
+  

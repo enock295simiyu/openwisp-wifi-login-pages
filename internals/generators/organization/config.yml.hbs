@@ -1,0 +1,286 @@
+---
+name: "{{name}}"
+slug: "{{slug}}"
+settings:
+  radius_realms: {{radius_realms}}
+  mobile_phone_verification: {{mobile_phone_verification}}
+  subscriptions: {{subscriptions}}
+
+# configuration variables for the server app
+server:
+  # URL to openwisp-radius
+  host: "{{openwisp_radius_url}}"
+  uuid: "{{uuid}}"
+  secret_key: "{{secret_key}}"
+  timeout: 2 #request timeout period in seconds
+
+# configuration variables for the client
+# Path of all the assets should be defined relative to the organization's folder
+# in assets directory.
+client:
+
+  auto_login: True
+
+  # path of favicon
+{{#if assets_confirm}}
+  favicon: "favicon.png"
+{{else}}
+  favicon: null
+{{/if}}
+
+  # path of the custom css file or files relative to organization's
+  # folder in assets directory.
+{{#if assets_confirm}}
+  css:
+    - "index.css"
+{{else}}
+  css: null
+{{/if}}
+{{#if assets_confirm}}
+  js:
+    - "index.js"
+{{else}}
+  js: []
+{{/if}}
+  languages:
+    - text: "english"
+      slug: "en"
+  default_language: "en"
+  components:
+    header:
+      logo:
+{{#if assets_confirm}}
+        url: "openwisp-logo-black.svg" # logo url
+        alternate_text: "{{name}}"
+{{else}}
+        url: null # logo url
+        alternate_text: "{{name}}"
+{{/if}}
+      links:
+        - text:
+            en: "Sign In" #link text in english
+          url: "/{orgSlug}/login"
+          authenticated: false
+        - text:
+            en: "Sign Up"
+          url: "/{orgSlug}/registration"
+          authenticated: false
+        - text:
+            en: "Status"
+          url: "/{orgSlug}/status"
+          authenticated: true
+        - text:
+            en: "Change password"
+          url: "/{orgSlug}/change-password"
+          authenticated: true
+          {{#if mobile_phone_verification }}
+          verified: true
+          {{/if}}
+          methods_excluded:
+            - saml
+            - social_login
+      {{#if mobile_phone_verification }}
+        - text:
+            en: "Change phone number"
+          url: "/{orgSlug}/change-phone-number"
+          authenticated: true
+          methods:
+            - mobile_phone
+      {{/if}}
+
+    footer:
+      links:
+        - text:
+            en: "link-1"
+          url: "https://link-1.com"
+          authenticated: false
+        - text:
+            en: "link-2"
+          url: "https://link-2.com"
+          authenticated: true
+          verified: false
+        - text:
+            en: "link-3"
+          url: "https://link-3.com"
+          authenticated: true
+          verified: true
+      secondary_text:
+        en: "Copyright"
+
+    registration_form:
+      input_fields:
+        phone_number: {}
+          # default international prefix
+          # country: "it"
+          # restrict international prefixes shown
+          # only_countries: ["it", "de", "uk"]
+        username:
+          pattern: '[a-zA-Z@.+\-_\d]{1,150}'
+        email:
+          pattern: '.+@.+\..+'
+        password:
+          pattern: ".{6,}"
+        password_confirm:
+          pattern: ".{6,}"
+        first_name:
+          setting: "disabled"
+        last_name:
+          setting: "disabled"
+        birth_date:
+          setting: "disabled"
+        location:
+          pattern: '[a-zA-Z@.+\-_\d]{1,150}'
+          setting: "disabled"
+        country:
+          pattern: '[a-zA-Z@.+\-_\d\s]{1,150}'
+        zipcode: {}
+        street: {}
+        city: {}
+        tax_number:
+          pattern: '[a-zA-Z@.+\-_\d]{1,150}'
+      additional_info_text: true
+      links:
+        login: true
+        forget_password: true
+
+    mobile_phone_verification_form:
+      input_fields:
+        code:
+          pattern: '[0-9]{6,}'
+
+    phone_number_change_form:
+      buttons:
+        change_phone_number: true
+        cancel: true
+
+    password_reset_form:
+      additional_text: true
+      contact_text: true
+      login_page_link: true
+
+    password_reset_confirm_form:
+      additional_text: true
+      input_fields:
+        password:
+          pattern: ".{6,}"
+        password_confirm:
+          pattern: ".{6,}"
+      contact_text: true
+      login_page_link: true
+
+    contact_page:
+      email: "support@openwisp.co"
+      helpdesk: "+789 948 564"
+{{#if assets_confirm}}
+      social_links:
+        - alt:
+            en: "twitter"
+          icon: "twitter.svg"
+          url: "https://twitter.com/openwisp"
+        - alt:
+            en: "facebook"
+          icon: "facebook.svg"
+          url: "https://facebook.com/openwisp"
+
+{{else}}
+      social_links: []
+{{/if}}
+
+    status_page:
+      links:
+        - text:
+            en: "Change your password"
+          url: "/{orgSlug}/change-password/"
+
+    login_form:
+      social_login:
+        links:
+{{#if assets_confirm}}
+          - text:
+              en: "Login with Facebook"
+            url: "#facebook"
+            icon: "facebook.svg"
+          - text:
+              en: "Login with Google"
+            icon: "google.svg"
+            url: "#google"
+          - text:
+              en: "Login with Twitter"
+            icon: "twitter.svg"
+            url: "#twitter"
+{{else}}
+          - text:
+              en: "Login with Facebook"
+            url: "#facebook"
+            icon: null
+          - text:
+              en: "Login with Google"
+            icon: null
+            url: "#google"
+          - text:
+              en: "Login with Twitter"
+            icon: null
+            url: "#twitter"
+{{/if}}
+      input_fields:
+        username:
+          type: "email"
+          pattern: '.+@.+\..+'
+        password:
+          pattern: ".{6,}"
+        remember_me:
+          value: {{remember_me}}
+      additional_info_text: true
+      buttons:
+        register: true
+      links:
+        forget_password: true
+
+    password_change_form:
+      input_fields:
+        password1:
+          pattern: ".{6,}"
+        password2:
+          pattern: ".{6,}"
+
+    404_page:
+      heading: true
+      sub_heading: true
+      message: true
+      homepage_link: true
+
+    captive_portal_login_form:
+      method: post
+      action: {{login_action_url}}
+      fields:
+        username: auth_user
+        password: auth_pass
+      macaddr_param_name: macaddr
+      additional_fields:
+        - name: zone
+          value: zone_name
+        - name: redirurl
+          value: http://localhost/{{slug}}/status
+        - name: accept
+          value: accept
+
+    captive_portal_logout_form:
+      method: post
+      action: {{login_action_url}}
+      fields:
+        id: logout_id
+      additional_fields: []
+      logout_by_session: {{logout_by_session_ID}}
+      wait_after: 3000
+
+{{#if assets_confirm}}
+  privacy_policy:
+    en: "privacy-en.md"
+  terms_and_conditions:
+    en: "terms-en.md"
+{{else}}
+  privacy_policy:
+    en: null
+  terms_and_conditions:
+    en: null
+{{/if}}

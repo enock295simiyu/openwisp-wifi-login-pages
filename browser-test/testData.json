@@ -1,0 +1,23 @@
+{
+  "testuser": {
+    "email": "testuser@openwisp.org",
+    "password": "testuser",
+    "organization": "default"
+  },
+  "expiredPasswordUser": {
+    "email": "expiredpassworduser@openwisp.org",
+    "password": "testuser",
+    "organization": "default"
+  },
+  "mobileVerificationTestUser": {
+    "phoneNumber": "+911234567890",
+    "password": "testuser",
+    "organization": "mobile",
+    "email": "testuser2@openwisp.org",
+    "uuid": "organization_uuid",
+    "secretKey": "organization_secret_key",
+    "method": "mobile_phone",
+    "changePhoneNumber": "+393660011333"
+  },
+  "allOrgScript": "analytics.js"
+}

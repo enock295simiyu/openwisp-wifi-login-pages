@@ -1,0 +1,83 @@
+.large-table {
+  max-width: 1000px;
+  width: 99.5%;
+  margin-bottom: 27px;
+  margin-right: auto;
+  margin-left: auto;
+  font-size: 0.85rem;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin-top: 0;
+  padding-top: 3%;
+}
+.large-table th {
+  padding: 2% 0 2%;
+}
+.large-table td {
+  text-align: center;
+  padding: 2% 0 2%;
+}
+.small-table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  margin-bottom: 27px;
+}
+.small-table tbody td {
+  padding: 1.5% 0;
+}
+.small-table tbody tr:first-child th,
+.small-table tbody tr:first-child td {
+  padding-top: 3%;
+}
+.small-table tbody tr:last-child td,
+.small-table tbody tr:last-child th {
+  padding-bottom: 3%;
+}
+.small-table tbody th {
+  text-align: right;
+  padding-right: 2%;
+}
+.small-table tbody td {
+  text-align: left;
+  padding-left: 2%;
+}
+.active-session {
+  font-weight: bold;
+}
+.active-session .button.session-logout {
+  margin-left: 20px;
+}
+.active-session .row.logout .button {
+  width: 75%;
+  margin: 0 auto;
+}
+#status.content {
+  flex-grow: 0;
+}
+#sessions {
+  flex-grow: 1;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+#sessions > div {
+  width: 100%;
+}
+#status .status-content {
+  line-height: 22px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+@media screen and (min-width: 0px) and (max-width: 500px) {
+  .logout-modal-container p.message {
+    margin: 0 6%;
+    line-height: 30px;
+  }
+  .status-content p {
+    min-width: 373px;
+  }
+  .status-content label {
+    margin-right: 0.4em;
+  }
+}

@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Footer /> rendering should render correctly 1`] = `
+<div
+  className="footer-container"
+>
+  <div
+    className="footer-row-1"
+  >
+    <div
+      className="footer-row-1-inner"
+    >
+      <a
+        className="footer-link "
+        href="https://link-1.com"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        link-1
+      </a>
+    </div>
+  </div>
+  <div
+    className="footer-row-2"
+  >
+    <div
+      className="footer-row-2-inner"
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "after html",
+        }
+      }
+    />
+  </div>
+</div>
+`;
+
+exports[`<Footer /> rendering with placeholder translation tags should render translation placeholder correctly 1`] = `
+<div
+  className="footer-container"
+>
+  <div
+    className="footer-row-1"
+  >
+    <div
+      className="footer-row-1-inner"
+    >
+      <a
+        className="footer-link "
+        href="https://link-1.com"
+        key="https://link-1.com"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        link-1
+      </a>
+    </div>
+  </div>
+  <div
+    className="footer-row-2"
+  >
+    <div
+      className="footer-row-2-inner"
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "after html",
+        }
+      }
+    />
+  </div>
+</div>
+`;

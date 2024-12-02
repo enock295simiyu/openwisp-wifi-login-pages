@@ -1,0 +1,52 @@
+#root .w-900 {
+  max-width: 900px;
+}
+#root .text-left {
+  text-align: left;
+}
+.modal.content {
+  padding-top: 1rem;
+}
+.modal-close-btn {
+  text-decoration: none;
+  color: inherit;
+}
+.modal-container .message h1 {
+  text-align: center;
+}
+.message {
+  max-height: 70vh;
+  overflow: auto;
+}
+.modal-container .message h1 {
+  font-size: 21px;
+}
+.modal-container .message h2 {
+  font-size: 18px;
+}
+.modal-container .message {
+  line-height: 30px;
+}
+
+@media screen and (min-width: 0px) and (max-width: 767px) {
+  #root .modal-container {
+    width: 100%;
+    max-width: none;
+    box-sizing: border-box;
+    padding: 40px 5px 20px;
+  }
+
+  #root .modal.content {
+    padding-top: 0;
+  }
+  #root .modal.content .modal-container {
+    top: 0;
+    height: 100%;
+    transform: none;
+  }
+
+  .modal-container .message {
+    max-height: 93vh;
+    padding-right: 15px;
+  }
+}

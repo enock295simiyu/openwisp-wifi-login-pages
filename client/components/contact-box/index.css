@@ -1,0 +1,28 @@
+.contact {
+  font-size: 15px;
+}
+.contact .label {
+  margin-right: 4px;
+}
+.contact .row:first-child {
+  margin-top: 0;
+}
+.contact-links {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-top: 15px;
+}
+.contact-links .link {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 0px 15px 0 0;
+}
+.contact-image {
+  width: 58px;
+  height: auto;
+}

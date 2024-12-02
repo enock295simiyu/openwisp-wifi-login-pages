@@ -1,0 +1,109 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Modal /> rendering should render nothing on incorrect param name 1`] = `
+<Fragment>
+  <div
+    className="modal is-visible content"
+  >
+    <div
+      className="modal-container w-900 text-left"
+    >
+      <Link
+        className="modal-close-btn"
+        to="/default/login"
+      >
+        ✖
+      </Link>
+      <div
+        className="message"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "",
+          }
+        }
+      />
+    </div>
+  </div>
+</Fragment>
+`;
+
+exports[`<Modal /> rendering should render nothing when request is bad 1`] = `
+<Fragment>
+  <div
+    className="modal is-visible content"
+  >
+    <div
+      className="modal-container w-900 text-left"
+    >
+      <Link
+        className="modal-close-btn"
+        to="/default/login"
+      >
+        ✖
+      </Link>
+      <div
+        className="message"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "",
+          }
+        }
+      />
+    </div>
+  </div>
+</Fragment>
+`;
+
+exports[`<Modal /> rendering should render privacy-policy correctly 1`] = `
+<Fragment>
+  <div
+    className="modal is-visible content"
+  >
+    <div
+      className="modal-container w-900 text-left"
+    >
+      <Link
+        className="modal-close-btn"
+        to="/default/login"
+      >
+        ✖
+      </Link>
+      <div
+        className="message"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "privacy policy modal content",
+          }
+        }
+      />
+    </div>
+  </div>
+</Fragment>
+`;
+
+exports[`<Modal /> rendering should render terms-and-conditions correctly 1`] = `
+<Fragment>
+  <div
+    className="modal is-visible content"
+  >
+    <div
+      className="modal-container w-900 text-left"
+    >
+      <Link
+        className="modal-close-btn"
+        to="/default/login"
+      >
+        ✖
+      </Link>
+      <div
+        className="message"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "t&c modal content",
+          }
+        }
+      />
+    </div>
+  </div>
+</Fragment>
+`;
