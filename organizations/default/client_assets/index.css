@@ -223,22 +223,22 @@ div.error {
 
 /* status */
 .large-table {
-  border-color: #ccc;
+  border-color: var(--border);
 }
 .large-table td {
-  color: #333333;
-  border-top: 1px dotted rgba(0, 0, 0, 0.2);
-  border-bottom: 1px dotted rgba(0, 0, 0, 0.2);
+  color: var(--copy-light);
+  border-top: 1px dotted var(--border);
+  border-bottom: 1px dotted var(--border);
 }
 .large-table thead {
-  background: #f6f6f6;
+  background: var(--foreground);
 }
 .large-table tbody tr:nth-child(odd),
 .small-table tbody:nth-child(even) {
-  background: #ffffff;
+  background: var(--foreground);
 }
 .large-table tbody tr:nth-child(even) {
-  background: #f9f9f9;
+  background: var(--foreground);
 }
 
 /* registration */
