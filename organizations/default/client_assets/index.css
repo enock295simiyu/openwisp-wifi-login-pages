@@ -1,144 +1,214 @@
+:root {
+  --primary: #36b62a;
+  --primary-content: #e7f9e6;
+  --primary-dark: #2a8d20;
+  --primary-light: #4dd340;
+
+  --secondary: #febf4b;
+  --secondary-content: #4a3000;
+  --secondary-dark: #fead18;
+  --secondary-light: #fed17e;
+
+  --background: #151f14;
+  --foreground: #202e1f;
+  --border: #354d33;
+
+  --copy: #fbfcfa;
+  --copy-light: #d2e0d1;
+  --copy-lighter: #97b894;
+
+  --success: #2ab62a;
+  --warning: #b6b62a;
+  --error: #b62a2a;
+  --success-content: #e6f9e6;
+  --warning-content: #000000;
+  --error-content: #f9e6e6;
+
+}
+
+body .container {
+  background: var(--foreground);
+  color: var(--copy);
+}
 body .input:focus {
-  border-color: #8b8b8b;
+  border-color: var(--primary-content);
+
 }
 body .input.error {
-  border-color: #d93025;
+  border-color: var(--error);
 }
 body .input {
-  border: 1px solid #ccc;
+  background-color: var(--foreground);
+  border: 1px solid var(--border);
+  color: var(--copy);
+}
+
+.react-tel-input .form-control {
+  position: relative;
+  font-size: 14px;
+  letter-spacing: .01rem;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-left: 48px;
+  margin-left: 0;
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  line-height: 25px;
+  height: 35px;
+  width: 300px;
+  outline: none;
+  color: var(--copy);
+}
+
+.react-tel-input .flag-dropdown {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  padding: 0;
+  background-color: var(--background);
+  border: 1px solid var(--border);
+  border-radius: 3px 0 0 3px;
+}
+
+.react-tel-input .flag-dropdown.open {
+  z-index: 2;
+  background: var(--background);
+  border-radius: 3px 0 0 0;
 }
 
 /* buttons */
 .button {
-  background-color: #333;
-  color: #fff;
+  background-color: var(--primary-dark);
+  color: var(--primary-content);
 }
 .button:disabled,
 .button:focus,
 .button:active,
 .button:hover {
-  background-color: #333333b3;
+  background-color: var(--primary-light);
 }
 .logout .button {
-  background: #df5d43;
+  background: var(--primary);
 }
 .cancel .button {
-  background: #df5d43;
+  background: var(--secondary);
 }
 .logout .button:hover {
-  background: rgba(186, 33, 33, 0.9);
+  background: var(--secondary);
 }
 .cancel .button:hover {
-  background: rgba(186, 33, 33, 0.9);
+  background: var(--secondary-dark);
 }
 
 /* links */
 .link {
-  color: #000;
+  color: var(--primary-dark);
 }
 .link:focus {
-  outline: 1px dotted #000;
+  outline: 1px dotted var(--primary-dark);
 }
 div.error {
-  color: #fff;
-  background: #d93025;
+  color: var(--error-content);
+  background: var(--error);
 }
 .side-column {
-  color: #000;
-  background: #f8f8f8;
+  color: var(--primary-content);
+  background: var(--background);
 }
 .main-column,
 .bg {
-  background: #f8f8f8;
+  background: var(--background);
+  color: var(--copy);
 }
 
 /* modal */
 .modal {
-  background-color: rgba(94, 110, 141, 0.9);
+  background-color: var(--background);
 }
 .modal-container {
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-  background: #f6f6f6;
+  box-shadow: 0 0 20px var(--border);
+  background: var(--foreground);
 }
 .logout-modal {
   background-color: rgba(94, 110, 141, 0.9);
 }
 .logout-modal-container {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-  background: #d3d3d3;
+  background: var(--foreground);
 }
 
 /* contact */
 .contact-links .link {
-  color: #ffffff;
+  color: var(--copy-light);
 }
 
 /* footer */
 .footer-container {
-  background: #fcfcfc;
-  border-top: 1px solid rgba(0, 0, 0, 0.05);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  background: var(--background);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
 }
 .footer-link {
-  color: #df5d43;
+  color: var(--primary-dark);
 }
 .footer-container a {
-  color: #df5d43;
+  color: var(--primary-dark);
 }
 .footer-row-2 {
-  color: #df5d43;
+  color: var(--copy-light);
 }
 
 /* header */
 .header-row-1 {
-  background: #fcfcfc;
+  background: var(--background);
 }
 .header-language-btn {
-  color: rgba(0, 0, 0, 0.45);
+  color: var(--copy-light);
   border-bottom: 3px rgba(0, 0, 0, 0.45) solid;
 }
 .header-language-btn.active {
-  color: rgba(223, 93, 67, 1);
-  border-bottom-color: rgba(223, 93, 67, 1);
+  color: var(--copy);
+  border-bottom-color: var(--copy);
 }
 .header-row-2 {
-  background: #fcfcfc;
+  background: var(--background);
   border-top: 1px solid rgba(0, 0, 0, 0.05);
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 #root .header-link {
   text-transform: uppercase;
-  color: #777;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: var(--copy);
+  border: 1px solid var(--border);
   font-weight: normal;
   background: transparent;
 }
 #root .social-link {
-  color: #777;
-  border: 1px solid rgba(0, 0, 0, 0.3);
-  background: #fff;
+  color: var(--primary-dark);
+  border: 1px solid var(--border);
+  background: var(--foreground);
 }
 #root .social-link:hover {
-  color: #000;
+  color: var(--primary-content);
 }
 
 #root .header-link.active,
 #root .header-link:hover {
-  background: #ffe5e5;
-  color: #df5d43;
+  background: var(--primary-light);
+  color: var(--primary-content);
   border: 1px solid rgba(0, 0, 0, 0);
 }
 #root .header-link.active {
   font-weight: bold;
 }
 .sticky-container {
-  border-bottom: 1px solid #000;
+  border-bottom: 1px solid var(--border);
   background: rgba(0, 0, 0, 0.65);
   color: #fff;
 }
 @media screen and (min-width: 0px) and (max-width: 767px) {
   .header-hamburger {
-    background-color: #f0f0f0;
+    background-color: var(--foreground);
   }
   .header-hamburger:focus {
     outline: dotted 1px #fff;
@@ -147,7 +217,7 @@ div.error {
     background: #777777;
   }
   .header-mobile-menu {
-    background: #fdf2f2;
+    background: var(--foreground);
   }
 }
 
@@ -173,20 +243,22 @@ div.error {
 
 /* registration */
 .plans .plan {
-  background: #fff;
-  border: 1px solid #fff;
+  background: var(--background);
+  border: 1px solid var(--border);
 }
 .plan:hover,
 .plan.active {
-  border: 1px solid #888;
+  border: 1px solid var(--copy-light);
 }
 
 .content > .inner {
-  background: #fcfcfc;
-  box-shadow: 0px 0px 6px #f4f7f6;
+  background: var(--foreground);
+  box-shadow: 0px 0px 6px var(--background);
+  color: white;
 }
 
 .main-column,
 .side-column {
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--border);
+  color: var(--copy);
 }

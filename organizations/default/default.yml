@@ -9,7 +9,7 @@ settings:
 # configuration variables for the server app
 server:
   # put the URL of openwisp-radius here
-  host: "http://localhost:8000/"
+  host: "https://api.nochwired.co.ke/"
   uuid: "887db5c6-1ee9-46c9-abcb-0513a1e0b988"
   secret_key: "61VlNjns2Wwe6qrdXRKe53KLyQD1hseM"
   timeout: 10 #request timeout period in seconds

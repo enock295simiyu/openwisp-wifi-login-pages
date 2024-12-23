@@ -1,5 +1,5 @@
 .payment-process .main-column {
-  background-color: #fff;
+  background-color: var(--background);
   border-radius: 5px;
   padding: 2% 4% 1% 4% !important;
 }
@@ -25,7 +25,8 @@ iframe {
 
 .plans .plan {
   margin: 0 0 10px;
-  border-radius: 5px;
+  border-radius: 5px var(--border);
+  background: var(--background);
 }
 
 .plans .plan label {
@@ -59,6 +60,8 @@ iframe {
 
 .plans .inactive label:hover {
   opacity: 1;
+  background: var(--background);
+  border: 1px solid var(--primary);
 }
 
 .plans .active label {

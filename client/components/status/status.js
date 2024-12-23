@@ -605,8 +605,8 @@ export default class Status extends React.Component {
             autoClose: 10000,
           });
           /* enable ttag */
-          logout(cookies, orgSlug);
-          setLoading(false);
+          // logout(cookies, orgSlug);
+          // setLoading(false);
           break;
 
         case "internet-mode":
