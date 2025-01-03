@@ -47,6 +47,7 @@ iframe {
 .plans label {
   display: block;
   font-weight: normal;
+  position: relative;
 }
 
 .plans span.price {
@@ -433,4 +434,40 @@ iframe {
 .small-table tbody td {
   text-align: left;
   padding-left: 2%;
+}
+
+.badge-soft-success {
+  background-color: var(--success);
+  color: var(--success-content);
+}
+
+.text-uppercase {
+  text-transform: uppercase !important;
+}
+
+.badge {
+  border-radius: .25rem;
+  color: #fff;
+  display: inline-block;
+  font-size: .75em;
+  font-weight: 600;
+  line-height: 1;
+  padding: .35em .65em;
+  text-align: center;
+  vertical-align: initial;
+  white-space: nowrap;
+  margin: 2px;
+}
+
+.badge-soft-warning {
+  background-color: var(--warning);
+  color: var(--warning-content);
+}
+
+.plans div.badge-container {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-top: 5px;
 }

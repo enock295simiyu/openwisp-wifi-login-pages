@@ -411,11 +411,24 @@ class BuyPlan extends React.Component {
     const pricingText = Number(plan.price)
       ? `${plan.price} ${plan.currency} ${plan.pricing}`
       : "";
+
     return (
       <label htmlFor={`radio${index}`}>
         <span className="title">{planTitle}</span>
         <span className="desc">{planDesc}</span>
         {pricingText && <span className="price">{pricingText}</span>}
+        <div className={"badge-container"}>
+          {plan.services.map((service, i) => {
+            console.log(service);
+
+            return (
+              <span key={i} style={{display: "inline-block"}}
+                    className={service === "HOTSPOT" ? "badge text-uppercase badge-soft-success" : "badge text-uppercase badge-soft-warning"}>{service}</span>
+            );
+
+          })}
+        </div>
+
       </label>
     );
   };
