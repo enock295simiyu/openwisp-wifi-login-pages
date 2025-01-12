@@ -984,7 +984,7 @@ class BuyPlan extends React.Component {
                 <button
                   onClick={this.handBuyPlanAgain}
                   className="button full"
-                >Payment Again
+                >Pay Again
                 </button>
               </div>
               <div className="row cancel">
