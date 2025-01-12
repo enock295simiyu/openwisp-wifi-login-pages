@@ -42,3 +42,7 @@ export const BuyInternetPlan = lazyWithPreload(() =>
 export const PaymentCodeVerification = React.lazy(() =>
   import(/* webpackChunkName: 'PaymentProcess' */ "../payment-verify"),
 );
+
+export const LoginToken = React.lazy(() =>
+  import(/* webpackChunkName: 'PaymentProcess' */ "../login-token"),
+);

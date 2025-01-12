@@ -30,3 +30,6 @@ export const buyPlanUrl = (orgSlug) =>
 export const currentPlanApiUrl = (orgSlug) => `${prefix}/${orgSlug}/plan/current`;
 export const verifyPaymentIdUrl = (orgSlug) =>
   `${prefix}/${orgSlug}/payment/validate/`;
+
+export const loginTokenUrl = (orgSlug) =>
+  `${prefix}/${orgSlug}/account/login-token/validate/`;

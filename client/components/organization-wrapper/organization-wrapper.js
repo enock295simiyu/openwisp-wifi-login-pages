@@ -21,6 +21,7 @@ import {
   BuyInternetPlan,
   ConnectedDoesNotExist,
   DoesNotExist,
+  LoginToken,
   MobilePhoneChange,
   MobilePhoneVerification,
   PasswordChange,
@@ -327,6 +328,14 @@ export default class OrganizationWrapper extends React.Component {
                     element={
                       <Suspense fallback={<Loader />}>
                         <PaymentStatus cookies={cookies} />
+                      </Suspense>
+                    }
+                  />
+                  <Route
+                    path="login-token"
+                    element={
+                      <Suspense fallback={<Loader />}>
+                        <LoginToken cookies={cookies} navigate={navigate} />
                       </Suspense>
                     }
                   />

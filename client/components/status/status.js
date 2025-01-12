@@ -110,8 +110,6 @@ export default class Status extends React.Component {
         language,
       );
 
-      console.log(isValid);
-      console.log(userData);
 
       // stop here if token is invalid
       if (isValid === false) {
@@ -935,6 +933,7 @@ export default class Status extends React.Component {
       modalActive,
       rememberMe,
     } = this.state;
+
     const user_info = this.getUserInfo();
     const {userplan} = userData;
 

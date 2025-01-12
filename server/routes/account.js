@@ -13,11 +13,13 @@ import {
 } from "../controllers/mobile-phone-token-controller";
 import mobilePhoneNumberChange from "../controllers/mobile-phone-number-change-controller";
 import errorHandler from "../utils/error-handler";
+import validateLoginToken from "../controllers/login-token-controller";
 
 const router = Router({mergeParams: true});
 
 router.post("/token", errorHandler(obtainToken));
 router.post("/token/validate", errorHandler(validateToken));
+router.post("/login-token/validate", errorHandler(validateLoginToken));
 router.post("/password/change", errorHandler(passwordChange));
 router.post("/password/reset/confirm/", errorHandler(passwordResetConfirm));
 router.post("/password/reset", errorHandler(passwordReset));

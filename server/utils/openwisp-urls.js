@@ -18,6 +18,7 @@ const paths = {
   buy_plan: "/plan/buy",
   current_plan: "/plan/current",
   validate_payment_id: "/payment/validate",
+  validate_login_token: "/login-token/validate",
 };
 
 const reverse = (name, orgSlug) => {
@@ -34,6 +35,9 @@ const reverse = (name, orgSlug) => {
   }
   if (name === "payment_ws") {
     prefix = prefix.replace("/api/v1/radius/", "/payments/");
+  }
+  if (name === "validate_login_token") {
+    prefix = prefix.replace("/radius/", "/users/");
   }
   return `${prefix.replace("{orgSlug}", orgSlug)}${path}`;
 };

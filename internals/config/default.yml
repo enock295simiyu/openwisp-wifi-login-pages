@@ -203,6 +203,13 @@ client:
         login: true
         register: true
 
+    login_token_form:
+      input_fields:
+        token:
+      links:
+        login: true
+        register: true
+
 
     phone_number_change_form:
       buttons:
