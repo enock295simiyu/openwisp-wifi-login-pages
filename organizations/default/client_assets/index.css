@@ -89,7 +89,7 @@ body .input {
   background-color: var(--primary-light);
 }
 .logout .button {
-  background: var(--primary);
+  background: var(--secondary);
 }
 .cancel .button {
   background: var(--secondary);
@@ -231,14 +231,14 @@ div.error {
   border-bottom: 1px dotted var(--border);
 }
 .large-table thead {
-  background: var(--foreground);
+  background: var(--background);
 }
 .large-table tbody tr:nth-child(odd),
 .small-table tbody:nth-child(even) {
-  background: var(--foreground);
+  background: var(--background);
 }
 .large-table tbody tr:nth-child(even) {
-  background: var(--foreground);
+  background: var(--background);
 }
 
 /* registration */
@@ -254,7 +254,7 @@ div.error {
 .content > .inner {
   background: var(--foreground);
   box-shadow: 0px 0px 6px var(--background);
-  color: white;
+  color: var(--copy);
 }
 
 .main-column,

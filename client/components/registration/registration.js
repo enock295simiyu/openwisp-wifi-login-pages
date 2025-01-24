@@ -25,6 +25,8 @@ import getError from "../../utils/get-error";
 import getLanguageHeaders from "../../utils/get-language-headers";
 import redirectToPayment from "../../utils/redirect-to-payment";
 import InfoModal from "../../utils/modal";
+import getAssetPath from "../../utils/get-asset-path";
+import getText from "../../utils/get-text";
 
 const PhoneInput = React.lazy(() =>
   import(/* webpackChunkName: 'PhoneInput' */ "react-phone-input-2"),
@@ -405,8 +407,8 @@ export default class Registration extends React.Component {
   };
 
   getForm = () => {
-    const {registration, settings, orgSlug} = this.props;
-    const {additional_info_text, input_fields, links} = registration;
+    const {registration, settings, orgSlug, language} = this.props;
+    const {additional_info_text, input_fields, links, social_login} = registration;
     const {
       success,
       phone_number,
@@ -433,12 +435,37 @@ export default class Registration extends React.Component {
       <>
         <div className="container content" id="registration">
           <div className="inner">
+
             <form
               className={`main-column ${success ? "success" : ""}`}
               onSubmit={this.handleSubmit}
               id="registration-form"
             >
               <div className="inner">
+                {social_login && social_login.links && (
+                  <div className="social-links row">
+                    {social_login.links.map((link) => (
+                      <p key={link.url}>
+                        <a
+                          href={link.url}
+                          rel="noopener noreferrer"
+                          className="social-link button full"
+                        >
+                          <span className="inner">
+                            <img
+                              src={getAssetPath(orgSlug, link.icon)}
+                              alt={getText(link.text, language)}
+                              className="icon"
+                            />
+                            <span className="text">
+                              {getText(link.text, language)}
+                            </span>
+                          </span>
+                        </a>
+                      </p>
+                    ))}
+                  </div>
+                )}
                 <div className="fieldset">
                   {getError(errors)}
                   {plans.length > 0 && this.getPlanSelection()}
@@ -925,6 +952,17 @@ Registration.propTypes = {
     subscriptions: PropTypes.bool,
   }).isRequired,
   registration: PropTypes.shape({
+    social_login: PropTypes.shape({
+      divider_text: PropTypes.object,
+      description: PropTypes.object,
+      links: PropTypes.arrayOf(
+        PropTypes.shape({
+          url: PropTypes.string.isRequired,
+          icon: PropTypes.string.isRequired,
+          text: PropTypes.object.isRequired,
+        }),
+      ),
+    }),
     input_fields: PropTypes.shape({
       email: PropTypes.shape({
         pattern: PropTypes.string.isRequired,

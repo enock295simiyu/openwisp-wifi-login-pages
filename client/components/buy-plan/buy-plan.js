@@ -28,6 +28,8 @@ import ReconnectingWebSocket from "../../utils/websocker_helper";
 import defaultConfig from "../../../server/utils/default-config";
 import config from "../../../server/config.json";
 import handleLogout from "../../utils/handle-logout";
+import getAssetPath from "../../utils/get-asset-path";
+import getText from "../../utils/get-text";
 
 axios.defaults.withCredentials = true;
 
@@ -442,9 +444,9 @@ class BuyPlan extends React.Component {
   };
 
   getPlanSelection = () => {
-    const {mobile_money_payment_form} = this.props;
+    const {mobile_money_payment_form, orgSlug, language, isAuthenticated} = this.props;
     const {plans, selectedPlan, order_stage} = this.state;
-    const {auto_select_first_plan} = mobile_money_payment_form;
+    const {auto_select_first_plan, social_login} = mobile_money_payment_form;
     let index = 0;
     let isHidden = !!auto_select_first_plan;
     if (isHidden === false && order_stage !== 1) {
@@ -452,7 +454,33 @@ class BuyPlan extends React.Component {
     }
     return (
       <div className={`plans ${isHidden ? "hidden" : ""}`}>
+        {isAuthenticated !== true ? social_login && social_login.links && (
+          <div className="social-links row">
+            {social_login.links.map((link) => (
+              <p key={link.url}>
+                <a
+                  href={link.url}
+                  rel="noopener noreferrer"
+                  className="social-link button full"
+                >
+                          <span className="inner">
+                            <img
+                              src={getAssetPath(orgSlug, link.icon)}
+                              alt={getText(link.text, language)}
+                              className="icon"
+                            />
+                            <span className="text">
+                              {getText(link.text, language)}
+                            </span>
+                          </span>
+                </a>
+              </p>
+            ))}
+          </div>
+        ) : null}
         <h3>Choose An Internet Plans</h3>
+
+
         <p className="intro">{t`PLAN_SETTING_TXT`}.</p>
         {plans.map((plan) => {
           const currentIndex = String(index);
@@ -1089,6 +1117,17 @@ export default BuyPlan;
 BuyPlan.contextType = LoadingContext;
 BuyPlan.propTypes = {
   mobile_money_payment_form: PropTypes.shape({
+    social_login: PropTypes.shape({
+      divider_text: PropTypes.object,
+      description: PropTypes.object,
+      links: PropTypes.arrayOf(
+        PropTypes.shape({
+          url: PropTypes.string.isRequired,
+          icon: PropTypes.string.isRequired,
+          text: PropTypes.object.isRequired,
+        }),
+      ),
+    }),
     input_fields: PropTypes.shape({
       phone_number: PropTypes.shape({
         country: PropTypes.string,

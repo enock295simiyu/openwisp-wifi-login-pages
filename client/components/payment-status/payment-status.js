@@ -208,7 +208,7 @@ export default class PaymentStatus extends React.Component {
                 </Link>
               </div>
 
-              <div className="row">
+              <div className="row cancel">
                 <button
                   type="button"
                   className="button full"

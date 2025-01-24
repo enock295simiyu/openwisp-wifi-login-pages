@@ -20,15 +20,15 @@ const saveCookiesFromResponse = (response, conf, res) => {
         sameSite: "lax",
         secure: process.env.NODE_ENV === "production",
       };
-      if (process.env.NODE_ENVIRONMENT == "production")
-        options.secure = true;
-      res.cookie(res_cookie);
+      if (process.env.NODE_ENVIRONMENT === "production") options.secure = true;
+      res.cookie(cookieName, cookieValue, options);
     });
   }
 };
 
 
 const sendSessionCookies = (response, conf, res) => {
+
   saveCookiesFromResponse(response, conf, res);
 
   return res

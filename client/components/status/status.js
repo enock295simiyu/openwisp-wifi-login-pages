@@ -187,6 +187,10 @@ export default class Status extends React.Component {
           }
         }
       } else if (this.loginFormRef && this.loginFormRef.current && mustLogin) {
+        if (userplan.is_expired || userplan.active == false) {
+          await this.mpesaFinalOperations();
+          return;
+        }
         if (
           method === "bank_card" &&
           isVerified === false &&
@@ -784,7 +788,7 @@ export default class Status extends React.Component {
         {session.stop_time == null &&
           captivePortalLogoutForm.logout_by_session && (
             <tr key={`${session.session_id}logout`} className="active-session">
-              <td className="row logout" colSpan="2">
+              <td className="row cancel" colSpan="2">
                 <input
                   type="button"
                   className="button full"

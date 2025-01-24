@@ -168,6 +168,7 @@ client:
           pattern: '[0-9]{6,}'
 
     mobile_money_payment_form:
+      social_login: [ ]
       auto_select_first_plan: false
       buttons:
         change_phone_number: true
