@@ -16,11 +16,13 @@ COPY ./package.json .
 
 COPY ./yarn.lock .
 
+RUN yarn config set network-timeout 600000 -g  \
+    && yarn config set registry "http://registry.npmjs.org"  \
+    && npm config set registry "http://registry.npmjs.org"
+
 RUN yarn install
 
 RUN npm install pm2 -g
-
-
 
 COPY ./ .
 

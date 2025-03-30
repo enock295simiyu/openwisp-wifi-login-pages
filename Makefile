@@ -18,8 +18,9 @@ build:
 	for build_arg in $$BUILD_ARGS_FILE; do \
 	    BUILD_ARGS+=" --build-arg $$build_arg"; \
 	done; \
-	docker build --tag enock295simiyu/wifi_login_pages:latest \
+	docker buildx build --platform=linux/arm64 --output type=docker --tag enock295simiyu/wifi_login_pages:latest \
 	             --file ./Dockerfile ./
+
 
 	echo "Finished building enock295simiyu/wifi_login_pages"
 
