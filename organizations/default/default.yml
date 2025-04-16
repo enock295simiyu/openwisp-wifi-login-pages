@@ -138,11 +138,11 @@ client:
         - alt:
             en: "twitter"
           icon: "twitter.svg"
-          url: "https://twitter.com/openwisp"
+          url: "https://twitter.com/NochWired"
         - alt:
-            en: "facebook"
-          icon: "facebook.svg"
-          url: "https://facebook.com/openwisp"
+            en: "instagram"
+          icon: "instagram.svg"
+          url: "https://www.instagram.com/nochwired"
 
     status_page:
       links:

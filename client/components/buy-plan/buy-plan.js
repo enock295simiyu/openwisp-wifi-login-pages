@@ -30,6 +30,7 @@ import config from "../../../server/config.json";
 import handleLogout from "../../utils/handle-logout";
 import getAssetPath from "../../utils/get-asset-path";
 import getText from "../../utils/get-text";
+import {Status} from "../organization-wrapper/lazy-import";
 
 axios.defaults.withCredentials = true;
 
@@ -120,6 +121,8 @@ class BuyPlan extends React.Component {
       orgAuthToken = cookies.cookies[`${orgSlug}_auth_token`];
       if (orgAuthToken) hasOrgCookies = true;
     }
+
+    Status.preload();
 
     if (hasOrgCookies && auth_token === undefined) {
       await this.getCurrentUserPlan();
@@ -255,7 +258,7 @@ class BuyPlan extends React.Component {
           });
           if (response.data.active_order.payment_status === "waiting") {
 
-            this.intervalId = setInterval(this.getPaymentStatus, 60000);
+            this.intervalId = setInterval(this.getPaymentStatus, 30000);
           }
 
 

@@ -9,10 +9,11 @@ import getAssetPath from "../../utils/get-asset-path";
 import getText from "../../utils/get-text";
 import getHtml from "../../utils/get-html";
 import shouldLinkBeShown from "../../utils/should-link-be-shown";
+import FaqSection from "../faq";
 
 export default class Contact extends React.Component {
   render() {
-    const {contactPage, language, orgSlug, isAuthenticated, userData} =
+    const {contactPage, language, orgSlug, isAuthenticated, userData, faq_questions} =
       this.props;
     const {email, helpdesk, social_links, pre_html, after_html} = contactPage;
     return (
@@ -66,6 +67,7 @@ export default class Contact extends React.Component {
               })}
             </div>
           )}
+          {faq_questions && <FaqSection faqQuestions={faq_questions} />}
 
           {getHtml(after_html, language)}
         </div>
@@ -77,6 +79,7 @@ export default class Contact extends React.Component {
 Contact.defaultProps = {
   isAuthenticated: false,
   userData: {},
+  faq_questions: [],
 };
 Contact.propTypes = {
   language: PropTypes.string.isRequired,
@@ -88,6 +91,7 @@ Contact.propTypes = {
     pre_html: PropTypes.object,
     after_html: PropTypes.object,
   }).isRequired,
+  faq_questions: PropTypes.array,
   isAuthenticated: PropTypes.bool,
   userData: PropTypes.object,
 };
