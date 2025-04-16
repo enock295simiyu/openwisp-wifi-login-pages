@@ -3,11 +3,16 @@
  * account verification with the specified method
  */
 const needsVerify = (method, user, settings) => {
+
+  const {userplan} = user;
+
   if (user.is_active === false || user.is_verified === true) {
     return false;
   }
 
+
   if (method === "mobile_phone") {
+
     return (
       user.method === "mobile_phone" &&
       user.is_verified === false &&
@@ -21,21 +26,18 @@ const needsVerify = (method, user, settings) => {
         user.is_verified === false &&
         user.payment_url &&
         settings.subscriptions,
+      userplan.active === true &&
+      userplan.is_expired === false,
     );
   }
 
-  if (method === "mpesa") {
-    const {userplan} = user;
-    if (userplan && userplan.active) {
-      return userplan.active;
-    }
-    return Boolean(
-      user.method === "mpesa" &&
-      user.is_verified === false &&
-      settings.subscriptions,
+  let response = Boolean(
+    !user.is_verified &&
+    settings.subscriptions &&
+    userplan.active === false ||
+    userplan.is_expired === true,
     );
-  }
+  return response;
 
-  return false;
 };
 export default needsVerify;

@@ -67,7 +67,7 @@ export default class Contact extends React.Component {
               })}
             </div>
           )}
-          {faq_questions && <FaqSection faqQuestions={faq_questions} />}
+          {faq_questions.length > 0 && <FaqSection faqQuestions={faq_questions} />}
 
           {getHtml(after_html, language)}
         </div>

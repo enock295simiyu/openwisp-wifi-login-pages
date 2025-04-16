@@ -152,10 +152,6 @@ client:
           value: http://localhost:8080/default/status
         - name: accept
           value: accept
-    faq_questions:
-      - question: "How many programmers does it take to screw a lightbulb?"
-        answer: "How many programmers does it take to screw a lightbulb?"
-        open: true
 
     captive_portal_logout_form:
       method: post

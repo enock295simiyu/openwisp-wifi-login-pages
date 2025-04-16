@@ -187,7 +187,7 @@ export default class Status extends React.Component {
           }
         }
       } else if (this.loginFormRef && this.loginFormRef.current && mustLogin) {
-        if (userplan.is_expired || userplan.active == false) {
+        if (userplan.is_expired || userplan.active === false) {
           await this.mpesaFinalOperations();
           return;
         }
@@ -235,18 +235,18 @@ export default class Status extends React.Component {
 
     const {userplan} = userData;
 
-    if (userplan) {
-      setUserData({
-        ...userData,
-        is_verified: !userplan.is_expired,
-      });
-    }
+    // if (userplan) {
+    //   setUserData({
+    //     ...userData,
+    //     is_verified: !userplan.is_expired,
+    //   });
+    // }
 
     // if the user needs bank card verification,
     // redirect to payment page and stop here
-    if (userData.is_verifying_plan !== true && !userplan.active ||
-      userData.is_verifying_plan !== true && userplan.is_expired === true) {
+    if (needsVerify("mpesa", userData, settings)) {
       // avoid redirect loop from proceed to payment
+
       if (settings.payment_requires_internet && userData.proceedToPayment) {
         // reset proceedToPayment
         setUserData({
@@ -343,7 +343,7 @@ export default class Status extends React.Component {
 
 
     const {method} = userData;
-    if (method === "mpesa") {
+    if (method === "mpesa" || !method) {
       await this.mpesaFinalOperations();
       return;
     }
