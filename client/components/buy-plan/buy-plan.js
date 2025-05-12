@@ -177,12 +177,13 @@ class BuyPlan extends React.Component {
         this.webSocket.onmessage = async (event) => {
           const payment_data = JSON.parse(event.data);
           const payment_status = payment_data.status;
+          const paymentMessage = payment_data.message;
 
           if (payment_status === "success") {
             this.handleLoginUserAfterOrderSuccess(payment_data.username, payment_data.key);
           }
 
-          await this.handlePaymentStatusChange(payment_status);
+          await this.handlePaymentStatusChange(payment_status, paymentMessage);
 
         };
 
@@ -319,7 +320,7 @@ class BuyPlan extends React.Component {
     }
   };
 
-  handlePaymentStatusChange = async (paymentStatus) => {
+  handlePaymentStatusChange = async (paymentStatus, paymentMessage = null) => {
 
     const {userData, orgSlug, setUserData, navigate} = this.props;
 
@@ -356,6 +357,7 @@ class BuyPlan extends React.Component {
 
         });
         toast.success("Payment was successfully");
+
         this.setState({payment_id: null, payment_status: null});
         clearInterval(this.intervalId);
         if (this.webSocket) {
@@ -368,7 +370,13 @@ class BuyPlan extends React.Component {
           ...userData,
           payment_url: null,
         });
-        toast.info("The payment failed");
+        if (paymentMessage) {
+          toast.error(paymentMessage);
+        } else {
+          toast.error("The payment failed");
+        }
+
+
         this.setState({payment_id: null, payment_status: null});
         clearInterval(this.intervalId);
         if (this.webSocket) {
@@ -903,7 +911,7 @@ class BuyPlan extends React.Component {
         }
         if (response && response.data && response.data.payment && response.data.payment.status === "success") {
           this.handleLoginUserAfterOrderSuccess(response.data.username, response.data.key);
-          await this.handlePaymentStatusChange(response.data.payment.status);
+          await this.handlePaymentStatusChange(response.data.payment.status, response.data.message);
           return;
         }
 
