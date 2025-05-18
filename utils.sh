@@ -14,7 +14,13 @@ function download_organization_configuration {
 
   DEST_DIR="/tmp/organizations/"
 
-  rsync -av --ignore-existing --progress "$SOURCE_DIR" "$DEST_DIR"
+    for SUBDIR in "$DEST_DIR"/*/; do
+    # Check if it is indeed a directory
+    if [ -d "$SUBDIR" ]; then
+        echo "Copying contents of $SOURCE_DIR to $SUBDIR"
+          rsync -av --ignore-existing --progress "$SOURCE_DIR" "$SUBDIR"
+    fi
+done
 
 echo "Done copying files to all subdirectories."
 	rsync -av --progress --inplace /tmp/organizations/ /opt/openwisp/wifi-login-pages/organizations/
