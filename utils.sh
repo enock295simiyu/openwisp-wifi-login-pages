@@ -10,16 +10,11 @@ function download_organization_configuration {
 		mkdir /tmp/organizations
 	tar -xvf organization.tar.gz -C /tmp/organizations
 	# Define source and destination directories
-  SOURCE_DIR="/opt/openwisp/wifi-login-pages/organizations/default"
+  SOURCE_DIR="/opt/openwisp/wifi-login-pages/organizations/default/"
 
-  DEST_DIR="/tmp/organizations"
-  for SUBDIR in "$DEST_DIR"/*/; do
-    # Check if it is indeed a directory
-    if [ -d "$SUBDIR" ]; then
-        echo "Copying contents of $SOURCE_DIR to $SUBDIR"
-        cp -r "$SOURCE_DIR"/* "$SUBDIR"
-    fi
-done
+  DEST_DIR="/tmp/organizations/"
+
+  rsync -av --ignore-existing --progress "$SOURCE_DIR" "$DEST_DIR"
 
 echo "Done copying files to all subdirectories."
 	rsync -av --progress --inplace /tmp/organizations/ /opt/openwisp/wifi-login-pages/organizations/

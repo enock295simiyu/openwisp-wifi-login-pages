@@ -7,7 +7,7 @@ build-local:
 	for build_arg in $$BUILD_ARGS_FILE; do \
 	    BUILD_ARGS+=" --build-arg $$build_arg"; \
 	done; \
-	docker build --target local --tag enock295simiyu/wifi_login_pages:local \
+	docker buildx build --output type=docker --tag enock295simiyu/wifi_login_pages:local \
 	             --file ./Dockerfile ./
 
 	echo "Finished building enock295simiyu/wifi_login_pages"
@@ -28,7 +28,7 @@ start:
 	docker run --name=wifi_login_pages -p 3030:3030 --rm --env-file ./.env enock295simiyu/wifi_login_pages:latest
 	docker container logs -f wifi_login_pages
 
-start-local:
+start-local: build-local
 	docker run --name=wifi_login_pages_local -p 3030:3030  --rm --env-file ./.env -d enock295simiyu/wifi_login_pages:local
 	docker container logs -f wifi_login_pages_local
 
