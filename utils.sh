@@ -22,8 +22,10 @@ function download_organization_configuration {
     fi
 done
 
+rsync -av --ignore-existing --progress /opt/openwisp/wifi-login-pages/organizations/js/ /tmp/organizations/js/
+
 echo "Done copying files to all subdirectories."
-	rsync -av --progress --inplace /tmp/organizations/ /opt/openwisp/wifi-login-pages/organizations/
+	 rsync -av --delete --stats --checksum --progress /tmp/organizations/ /opt/openwisp/wifi-login-pages/organizations/
 	chmod -R 600 /opt/openwisp/wifi-login-pages/organizations/
 	rm -rf /tmp/organizations
 }

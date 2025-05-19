@@ -53,3 +53,13 @@ compilation-stats.json
 client/config.json
 sentry-env.json
 /.env
+Dockerfile
+node_modules
+npm-debug.log
+.dockerignore
+.git
+.gitignore
+tests
+*.md
+.env
+/log
