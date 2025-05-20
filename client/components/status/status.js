@@ -109,6 +109,7 @@ export default class Status extends React.Component {
         logout,
         language,
       );
+      console.log(isValid);
 
 
       // stop here if token is invalid
@@ -976,6 +977,10 @@ export default class Status extends React.Component {
           <div className="inner">
             <div className="main-column">
               <div className="inner">
+                <p>If nothing happens click <a href={"#"} onClick={(e) => {
+                  e.preventDefault();
+                  location.reload();
+                }} className="link">here</a></p>
                 {!internetMode &&
                   contentArr.map((text) => {
                     if (text !== "")
