@@ -94,6 +94,10 @@ class BuyPlan extends React.Component {
 
     if (settings.subscriptions) {
       setLoading(true);
+      setUserData({
+        ...userData,
+        plan_changed: true,
+      });
       axios({
         method: "get",
         headers: {
@@ -804,6 +808,13 @@ class BuyPlan extends React.Component {
                           {t`VERIFY_PAYMENT_CODE_TXT`}
                         </Link>
                       </p>
+                    )}
+                    {links && links.redeem_voucher_code && (
+                      <div className="row links">
+                        <Link to={`/${orgSlug}/voucher-code`} className="link">
+                          Redeem Voucher Code
+                        </Link>
+                      </div>
                     )}
                   </div>
                 )}

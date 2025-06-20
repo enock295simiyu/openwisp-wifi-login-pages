@@ -102,6 +102,7 @@ export default class Header extends React.Component {
                     src={getAssetPath(orgSlug, secondLogo.url)}
                     alt={secondLogo.alternate_text}
                     className="header-logo-image header-desktop-logo-image"
+                    loading="eager" decoding="async" fetchPriority="high"
                   />
                 </div>
               )}
@@ -177,6 +178,7 @@ export default class Header extends React.Component {
                         src={getAssetPath(orgSlug, logo.url)}
                         alt={logo.alternate_text}
                         className="header-logo-image header-mobile-logo-image"
+                        loading="eager" decoding="async"
                       />
                     </Link>
                   ) : null}
@@ -188,6 +190,7 @@ export default class Header extends React.Component {
                     src={getAssetPath(orgSlug, secondLogo.url)}
                     alt={secondLogo.alternate_text}
                     className="header-logo-image header-mobile-logo-image"
+                    loading="eager" decoding="async"
                   />
                 </div>
               )}

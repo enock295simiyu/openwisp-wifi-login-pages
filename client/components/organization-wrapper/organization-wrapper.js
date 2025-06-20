@@ -32,6 +32,7 @@ import {
   PaymentStatus,
   Registration,
   Status,
+  VoucherCode,
 } from "./lazy-import";
 import Logout from "./lazy-logout";
 import {localStorage} from "../../utils/storage";
@@ -336,6 +337,14 @@ export default class OrganizationWrapper extends React.Component {
                     element={
                       <Suspense fallback={<Loader />}>
                         <LoginToken cookies={cookies} navigate={navigate} />
+                      </Suspense>
+                    }
+                  />
+                  <Route
+                    path="voucher-code"
+                    element={
+                      <Suspense fallback={<Loader />}>
+                        <VoucherCode cookies={cookies} navigate={navigate} />
                       </Suspense>
                     }
                   />

@@ -19,6 +19,7 @@ const paths = {
   current_plan: "/plan/current",
   validate_payment_id: "/payment/validate",
   validate_login_token: "/login-token/validate",
+  redeem_voucher_code: "/redeem-voucher",
 };
 
 const reverse = (name, orgSlug) => {
@@ -30,7 +31,7 @@ const reverse = (name, orgSlug) => {
   if (name === "plans" || name === "current_plan") {
     prefix = prefix.replace("/radius/", "/subscriptions/");
   }
-  if (name === "initiate_payment" || name === "buy_plan" || name === "payment_status" || name === "validate_payment_id") {
+  if (name === "initiate_payment" || name === "buy_plan" || name === "payment_status" || name === "validate_payment_id" || name === "redeem_voucher_code") {
     prefix = prefix.replace("/radius/", "/payments/");
   }
   if (name === "payment_ws") {

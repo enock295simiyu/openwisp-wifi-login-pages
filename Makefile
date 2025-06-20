@@ -28,8 +28,11 @@ start:
 	docker run --name=wifi_login_pages -p 3030:3030 --rm --env-file ./.env enock295simiyu/wifi_login_pages:latest
 	docker container logs -f wifi_login_pages
 
-start-local: build-local
-	docker run --name=wifi_login_pages_local -p 3030:3030  --rm --env-file ./.env -d enock295simiyu/wifi_login_pages:local
+pull:
+	docker pull ghcr.io/enock295simiyu/wifi_login_pages:latest
+
+start-local:
+	docker run --name=wifi_login_pages_local -p 3030:3030  --rm --env-file ./.env -d ghcr.io/enock295simiyu/wifi_login_pages:latest
 	docker container logs -f wifi_login_pages_local
 
 stop:

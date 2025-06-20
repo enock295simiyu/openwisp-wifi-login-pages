@@ -124,6 +124,7 @@ client:
       links:
         forget_password: true
         verify_payment_id: true
+        redeem_voucher_code: true
 
     password_change_form:
       input_fields:
@@ -192,6 +193,7 @@ client:
         login: true
         register: true
         verify_payment_id: true
+        redeem_voucher_code: true
 
     payment_verify_form:
       input_fields:
@@ -210,6 +212,7 @@ client:
       links:
         login: true
         register: true
+        redeem_voucher_code: true
 
 
     phone_number_change_form:

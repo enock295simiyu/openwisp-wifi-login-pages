@@ -490,11 +490,20 @@ export default class Login extends React.Component {
                 )}
 
                 {links && links.verify_payment_id && (
-                  <p>
+                  <div className="row links">
                     <Link to={`/${orgSlug}/payment/verify`} className="link">
                       {t`VERIFY_PAYMENT_CODE_TXT`}
                     </Link>
-                  </p>
+                  </div>
+                )}
+
+
+                {links && links.redeem_voucher_code && (
+                  <div className="row links">
+                    <Link to={`/${orgSlug}/voucher-code`} className="link">
+                      Redeem Voucher Code
+                    </Link>
+                  </div>
                 )}
 
                 {getHtml(after_html, language, "after-html")}
@@ -559,6 +568,8 @@ Login.propTypes = {
     }),
     links: PropTypes.shape({
       forget_password: PropTypes.bool,
+      redeem_voucher_code: PropTypes.bool,
+      verify_payment_id: PropTypes.bool,
     }).isRequired,
     pre_html: PropTypes.object,
     intro_html: PropTypes.object,

@@ -46,3 +46,8 @@ export const PaymentCodeVerification = React.lazy(() =>
 export const LoginToken = React.lazy(() =>
   import(/* webpackChunkName: 'PaymentProcess' */ "../login-token"),
 );
+
+export const VoucherCode = React.lazy(() =>
+  import(/* webpackChunkName: 'PaymentProcess' */ "../voucher-code"),
+);
+

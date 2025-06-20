@@ -109,8 +109,6 @@ export default class Status extends React.Component {
         logout,
         language,
       );
-      console.log(isValid);
-
 
       // stop here if token is invalid
       if (isValid === false) {
