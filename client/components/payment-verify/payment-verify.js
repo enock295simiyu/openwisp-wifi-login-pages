@@ -25,7 +25,7 @@ import submitOnEnter from "../../utils/submit-on-enter";
 
 const PhoneInput = React.lazy(() =>
   import(/* webpackChunkName: 'PhoneInput' */ "react-phone-input-2"),
-);
+)
 
 export default class PaymentCodeVerification extends React.Component {
   phoneTokenSentKey = "owPhoneTokenSent";
@@ -46,12 +46,18 @@ export default class PaymentCodeVerification extends React.Component {
   async componentDidMount() {
     const {
       orgName,
-      setTitle,
+      setTitle, setUserData, userData,
     } = this.props;
     setTitle(t`PAYMENT_VERIFY_TITL`, orgName);
+    setUserData({
+      ...userData,
+      plan_changed: true,
+      mustLogin: true,
+    });
   }
 
   handleChange(event) {
+
     handleChange(event, this);
   }
 
@@ -81,6 +87,7 @@ export default class PaymentCodeVerification extends React.Component {
         });
         setLoading(false);
         toast.success("Payment Code verified successfully");
+        console.log(userData);
         if (
           !userData.auth_token || !userData.radius_user_token
         ) {
@@ -100,6 +107,7 @@ export default class PaymentCodeVerification extends React.Component {
             ...(data.code ? {code: data.code} : null),
             ...(errorText ? {nonField: errorText} : {nonField: ""}),
             ...(data.account ? {phone_number: data.account} : null),
+            ...(data.account ? {account: data.account} : null),
             ...(data.payment_id ? {payment_id: data.payment_id} : null),
           },
         });
@@ -171,6 +179,7 @@ export default class PaymentCodeVerification extends React.Component {
     setLoading(false);
   }
 
+
   render() {
     const {payment_id, errors, success, phone_number} =
       this.state;
@@ -185,6 +194,7 @@ export default class PaymentCodeVerification extends React.Component {
     if (!phone_number && userData.phone_number) {
       this.setState({phone_number: userData.phone_number});
     }
+
 
     return (
       <div className="container content" id="mobile-phone-verification">
@@ -241,14 +251,16 @@ export default class PaymentCodeVerification extends React.Component {
                         []
                       }
                       value={phone_number}
-                      onChange={(value) =>
-                        this.handleChange({
+                      onChange={(value) => {
+                        // let normalized = this.normalizePhone(value)
+                        //  console.log(normalized)
+                        return this.handleChange({
                           target: {
                             name: "phone_number",
                             value: `+${value}`,
                           },
                         })
-                      }
+                      }}
                       onKeyDown={(event) => {
                         submitOnEnter(
                           event,
@@ -260,6 +272,7 @@ export default class PaymentCodeVerification extends React.Component {
                       enableSearch={Boolean(
                         input_fields.phone_number.enable_search,
                       )}
+                      countryCodeEditable={false}
                       inputProps={{
                         name: "phone_number",
                         id: "phone-number",
@@ -288,7 +301,12 @@ export default class PaymentCodeVerification extends React.Component {
                       required
                       name="payment_id"
                       value={payment_id}
-                      onChange={this.handleChange}
+                      onChange={(value) => this.handleChange({
+                        target: {
+                          name: "payment_id",
+                          value: value.target.value.trim().split(/\s+/)[0],
+                        },
+                      })}
                       placeholder={t`PAYMENT_ID_PHOLD`}
                       title={t`MOBILE_CODE_TITL`}
                     />

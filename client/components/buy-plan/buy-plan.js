@@ -97,6 +97,7 @@ class BuyPlan extends React.Component {
       setUserData({
         ...userData,
         plan_changed: true,
+        mustLogin: true,
       });
       axios({
         method: "get",
@@ -367,7 +368,8 @@ class BuyPlan extends React.Component {
         if (this.webSocket) {
           this.webSocket.close();
         }
-        navigate(`/${orgSlug}/status`);
+        // navigate(`/${orgSlug}/status`);
+        window.location.href = `/${orgSlug}/status`;
         return;
       case "failed":
         setUserData({
