@@ -87,7 +87,7 @@ export default class Header extends React.Component {
                     <Link to={`/${orgSlug}`}>
                       <img
                         src={getAssetPath(orgSlug, logo.url)}
-                        loading="eager" fetchPriority="high"
+                        loading="eager" fetchpriority="high"
                         alt={logo.alternate_text}
                         className="header-logo-image header-desktop-logo-image"
                       />
@@ -102,7 +102,7 @@ export default class Header extends React.Component {
                     src={getAssetPath(orgSlug, secondLogo.url)}
                     alt={secondLogo.alternate_text}
                     className="header-logo-image header-desktop-logo-image"
-                    loading="eager" decoding="async" fetchPriority="high"
+                    loading="eager" decoding="async" fetchpriority="high"
                   />
                 </div>
               )}

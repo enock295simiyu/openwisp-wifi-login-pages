@@ -20,7 +20,7 @@ export default class PaymentStatus extends React.Component {
   }
 
   async componentDidMount() {
-    const {cookies, orgSlug, setUserData, logout, params, settings, language} =
+    const {cookies, orgSlug, setUserData, logout, params, settings, language, navigate} =
       this.props;
     const {status} = params;
 
@@ -64,6 +64,7 @@ export default class PaymentStatus extends React.Component {
         ...userData,
         mustLogin: settings.payment_requires_internet ? true : undefined,
       });
+
     }
   }
 
@@ -129,7 +130,10 @@ export default class PaymentStatus extends React.Component {
       redirectToStatus();
     }
     if (status === "draft") {
-      return this.renderDraft();
+
+      this.paymentProceedHandler();
+      navigate(`/${orgSlug}/buy-plan`);
+      // return this.renderDraft();
     }
 
 
