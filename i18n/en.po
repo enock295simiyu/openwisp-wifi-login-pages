@@ -388,15 +388,15 @@ msgstr ""
 
 msgid "VERIFY_PAYMENT (${ phone_number })"
 msgstr ""
-"Insert the M-Pesa transaction code that was sent to (${ phone_number }) "
-"to verfy your plan"
+"Copy the whole M-pesa message send to (${ phone_number }) and paste below.  "
+"You can type the transaction ID from the M-Pesa Message."
 
 #: client/components/mobile-phone-verification/mobile-phone-verification.js:215
 msgid "MOBILE_CODE_PHOLD"
 msgstr "enter SMS verification code"
 
 msgid "PAYMENT_ID_PHOLD"
-msgstr "Enter M-Pesa Transaction code"
+msgstr "Enter Transaction code or paste the whole message"
 
 msgid "LOGIN_CODE_PHOLD"
 msgstr "Enter the code you received"

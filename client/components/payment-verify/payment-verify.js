@@ -200,6 +200,8 @@ export default class PaymentCodeVerification extends React.Component {
       <div className="container content" id="mobile-phone-verification">
         <div className="inner">
           <div className="main-column">
+            <h2 className="title">{t`PAYMENT_VERIFY_TITL`}</h2>
+            <span className="desc">You can login to your account and connect to out services by using the phone number and the last M-pesa transaction code you used to pay for the service.</span>
             <div className="inner">
               <form
                 className={`${success ? "success" : ""}`}
@@ -291,7 +293,7 @@ export default class PaymentCodeVerification extends React.Component {
 
                   <div className="row">
                     {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-                    <label htmlFor="payment_id">M-Pesa Transaction Code</label>
+                    <label htmlFor="payment_id">Transaction Code / M-Pesa Message</label>
                     {getError(errors, "payment_id")}
                     <input
                       className={`input ${
@@ -319,12 +321,12 @@ export default class PaymentCodeVerification extends React.Component {
                 </div>
               </form>
 
-              <div className="row fieldset change">
-                <p className="label">{t`PHONE_CHANGE_LBL`} Buy new plan</p>
+              <div className="row fieldset cancel">
+                <p className="label">Cancel operation </p>
                 <a
                   href={`/${orgSlug}/buy-plan`}
                   className="button full"
-                >Buy Plan</a>
+                >Cancel</a>
               </div>
 
               {links && (

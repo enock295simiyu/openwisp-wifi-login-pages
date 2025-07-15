@@ -357,7 +357,7 @@ class BuyPlan extends React.Component {
           ...userData,
           payment_url: null,
           mustLogin: true,
-          is_verified: true,
+          is_verified: false,
           plan_changed: true,
 
         });
@@ -368,8 +368,8 @@ class BuyPlan extends React.Component {
         if (this.webSocket) {
           this.webSocket.close();
         }
-        // navigate(`/${orgSlug}/status`);
-        window.location.href = `/${orgSlug}/status`;
+        navigate(`/${orgSlug}/status`);
+        // window.location.href = `/${orgSlug}/status`;
         return;
       case "failed":
         setUserData({
@@ -587,7 +587,7 @@ class BuyPlan extends React.Component {
         <h2>Complete Order</h2>
         <p className="intro">Complete your order by filling you safaricom phone number that you are going to pay for the
           order.</p>
-        <div className={"row"}>
+        <div className="row">
           <table className="small-table"
 
             >
@@ -758,6 +758,7 @@ class BuyPlan extends React.Component {
             >
               <div className="inner">
                 <div className="fieldset">
+
                   {getError(errors)}
                   {plans.length > 0 && this.getPlanSelection()}
                   {(plans.length === 0 ||
@@ -785,6 +786,18 @@ class BuyPlan extends React.Component {
 
                 {links && !isAuthenticated ? (
                   <div className="row links">
+                    <div className="row payment-status-row-4">
+                      <p>Already paid? Click the button bellow to login using M-pesa transaction code</p>
+                      <div className="row ">
+                        <Link
+                          to={`/${orgSlug}/payment/verify`}
+                          className="button full"
+                          // onClick={this.connectToInternet}
+                        >
+                          Log using M-pesa transaction code
+                        </Link>
+                      </div>
+                    </div>
                     {links.forget_password && (
                       <p>
                         <Link
@@ -890,6 +903,7 @@ class BuyPlan extends React.Component {
       ...userData,
       mustLogin: true,
       method: "mpesa",
+      is_verified: false,
       plan_changed: true,
     });
     redirectToStatus();
