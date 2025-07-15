@@ -3,12 +3,14 @@ import plans from "../controllers/plans-controller";
 import errorHandler from "../utils/error-handler";
 import buyPlan from "../controllers/buy-plan-controller";
 import currentPlan from "../controllers/current-plan-controller";
+import statusRedirect from "../controllers/status-redirect-controller";
 
 const router = Router({mergeParams: true});
 
 router.get("/", errorHandler(plans));
 router.post("/buy", errorHandler(buyPlan));
 router.get("/current", errorHandler(currentPlan));
+router.get("/redirect", errorHandler(statusRedirect));
 
 
 export default router;

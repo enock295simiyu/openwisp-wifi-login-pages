@@ -35,3 +35,6 @@ export const loginTokenUrl = (orgSlug) =>
   `${prefix}/${orgSlug}/account/login-token/validate/`;
 export const redeemVoucherCodeUrl = (orgSlug) =>
   `${prefix}/${orgSlug}/payment/redeem-voucher`;
+
+export const successRedirectUrl = (orgSlug) =>
+  `${prefix}/${orgSlug}/plan/redirect`;

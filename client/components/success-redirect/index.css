@@ -1,0 +1,13 @@
+.processing-payment-loader {
+  margin: 0 auto;
+  width: 100%;
+}
+
+.processing-payment-loader svg {
+  color: var(--primary); /* for svg-based loaders */
+  fill: var(--primary);
+}
+
+.processing-payment-loader div {
+  border-color: var(--primary); /* for border-based loaders */
+}

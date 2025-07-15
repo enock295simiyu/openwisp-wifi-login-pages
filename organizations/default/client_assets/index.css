@@ -214,7 +214,7 @@ div.error {
     outline: dotted 1px #fff;
   }
   .header-hamburger > div {
-    background: #777777;
+    background: var(--background);
   }
   .header-mobile-menu {
     background: var(--foreground);
@@ -261,4 +261,13 @@ div.error {
 .side-column {
   border: 1px solid var(--border);
   color: var(--copy);
+}
+
+.processing-payment-loader svg {
+  color: var(--primary); /* for svg-based loaders */
+  fill: var(--primary);
+}
+
+.processing-payment-loader div {
+  border-color: var(--primary); /* for border-based loaders */
 }

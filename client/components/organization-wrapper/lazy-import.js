@@ -50,4 +50,7 @@ export const LoginToken = React.lazy(() =>
 export const VoucherCode = React.lazy(() =>
   import(/* webpackChunkName: 'PaymentProcess' */ "../voucher-code"),
 );
+export const SuccessRedirect = lazyWithPreload(() =>
+  import(/* webpackChunkName: 'PaymentProcess' */ "../success-redirect"),
+);
 

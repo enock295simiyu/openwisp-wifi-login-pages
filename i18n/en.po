@@ -374,6 +374,9 @@ msgstr "SMS verification code sent successfully."
 msgid "PAYMENT_VERIFY_TITL"
 msgstr "Verify Payment Code"
 
+msgid "SUCCESS_REDIRECT_TITL"
+msgstr "Success, Redirecting to the internet"
+
 msgid "LOGIN_TOKEN_TITL"
 msgstr "Enter Login Token"
 #: client/components/mobile-phone-verification/mobile-phone-verification.js:200

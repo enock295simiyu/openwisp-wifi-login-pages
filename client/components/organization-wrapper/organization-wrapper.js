@@ -32,6 +32,7 @@ import {
   PaymentStatus,
   Registration,
   Status,
+  SuccessRedirect,
   VoucherCode,
 } from "./lazy-import";
 import Logout from "./lazy-logout";
@@ -345,6 +346,14 @@ export default class OrganizationWrapper extends React.Component {
                     element={
                       <Suspense fallback={<Loader />}>
                         <VoucherCode cookies={cookies} navigate={navigate} />
+                      </Suspense>
+                    }
+                  />
+                  <Route
+                    path="success-redirect"
+                    element={
+                      <Suspense fallback={<Loader />}>
+                        <SuccessRedirect cookies={cookies} navigate={navigate} />
                       </Suspense>
                     }
                   />

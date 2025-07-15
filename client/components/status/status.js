@@ -206,6 +206,8 @@ export default class Status extends React.Component {
         }
         this.notifyCpLogin(userData);
         this.loginFormRef.current.submit();
+
+        // window.location.replace('https://www.google.com/');
         // if user is already authenticated and coming from other pages
       } else if (!mustLogin) {
         await this.finalOperations();
@@ -384,6 +386,7 @@ export default class Status extends React.Component {
       this.getUserActiveRadiusSessions();
     }, 60000);
     window.addEventListener("resize", this.updateScreenWidth);
+
     this.updateSpinner();
   }
 
@@ -512,6 +515,7 @@ export default class Status extends React.Component {
       const macaddr = searchParams.get(
         captivePortalLoginForm.macaddr_param_name,
       );
+
       if (
         reply ||
         this.loginIframeRef.current.contentDocument.title.indexOf("404") >= 0

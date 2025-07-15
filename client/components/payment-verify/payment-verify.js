@@ -216,6 +216,7 @@ export default class PaymentCodeVerification extends React.Component {
                         type="tel"
                         className="input"
                         name="phone_number"
+                        required
                         value={phone_number}
                         onChange={(value) =>
                           this.handleChange({

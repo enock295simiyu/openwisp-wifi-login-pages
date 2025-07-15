@@ -495,7 +495,7 @@ class BuyPlan extends React.Component {
             ))}
           </div>
         ) : null}
-        <h3>Choose An Internet Plans</h3>
+        <h3>Choose An Internet Plan</h3>
 
 
         <p className="intro">{t`PLAN_SETTING_TXT`}.</p>
