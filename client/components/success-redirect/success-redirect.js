@@ -13,6 +13,7 @@ import LoadingContext from "../../utils/loading-context";
 import handleChange from "../../utils/handle-change";
 import Contact from "../contact-box";
 import {successRedirectUrl} from "../../constants";
+import handleLogout from "../../utils/handle-logout";
 
 
 export default class SuccessRedirect extends React.Component {
@@ -43,9 +44,39 @@ export default class SuccessRedirect extends React.Component {
     }, 3000);
   }
 
+  logout = () => {
+    const {logout, cookies, orgSlug, setUserData, userData, navigate} =
+      this.props;
+    const redirectToStatus = (statusUrl = `/${orgSlug}/status`) =>
+      navigate(statusUrl);
+    handleLogout(
+      logout,
+      cookies,
+      orgSlug,
+      setUserData,
+      userData,
+      false,
+      redirectToStatus,
+    );
+  };
+
+
   handleChange(event) {
     handleChange(event, this);
   }
+
+  redirectToStatus = () => {
+    const {orgSlug, navigate, userData, setUserData} =
+      this.props;
+    setUserData({
+      ...userData,
+      mustLogin: false,
+    });
+
+    const redirectToStatus = (statusUrl = `/${orgSlug}/status`) =>
+      navigate(statusUrl);
+    redirectToStatus();
+  };
 
   render() {
     const {orgSlug} = this.props;
@@ -68,6 +99,16 @@ export default class SuccessRedirect extends React.Component {
 
 
               </div>
+              <div className="row payment-status-row-4 cancel">
+                <p>If you dont want to be redirected you can cancel and go back to the status page</p>
+                <button
+                  type="button"
+                  className="button full"
+                  onClick={this.redirectToStatus}
+                >
+                  Cancel Operation and view your account
+                </button>
+              </div>
             </div>
 
             <Contact />
@@ -87,6 +128,7 @@ SuccessRedirect.propTypes = {
   orgName: PropTypes.string.isRequired,
   cookies: PropTypes.instanceOf(Cookies).isRequired,
   authenticate: PropTypes.func.isRequired,
+  logout: PropTypes.func.isRequired,
   userData: PropTypes.object.isRequired,
   setUserData: PropTypes.func.isRequired,
   setTitle: PropTypes.func.isRequired,

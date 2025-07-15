@@ -584,7 +584,7 @@ class BuyPlan extends React.Component {
     }
     return (
       <div className={isHidden ? "hidden" : ""}>
-        <h3>Complete Order</h3>
+        <h2>Complete Order</h2>
         <p className="intro">Complete your order by filling you safaricom phone number that you are going to pay for the
           order.</p>
         <div className={"row"}>
@@ -742,6 +742,10 @@ class BuyPlan extends React.Component {
     const {phone_number} = userData;
     const statusPageUrl = `/${orgSlug}/status`;
 
+    console.log(
+      userData,
+    );
+
 
     return (
       <>
@@ -778,14 +782,8 @@ class BuyPlan extends React.Component {
                     </div>
                   )}
 
-                <div className="row cancel">
 
-                  <Link className="button full" to={statusPageUrl}>
-                    {t`CANCEL`}
-                  </Link>
-                </div>
-
-                {links && !isAuthenticated && (
+                {links && !isAuthenticated ? (
                   <div className="row links">
                     {links.forget_password && (
                       <p>
@@ -819,6 +817,37 @@ class BuyPlan extends React.Component {
                       </div>
                     )}
                   </div>
+                ) : (
+                  <>
+                    {userData && userData.is_verified === true ? (
+                      <div className="row payment-status-row-4">
+                        <p>Internet not working? Click on the button below to connect to you wifi session</p>
+                        <div className="row ">
+                          <button
+                            type="button"
+                            className="button full"
+                            onClick={this.connectToInternet}
+                          >
+                            Connect
+                          </button>
+                        </div>
+                      </div>
+                    ) : null}
+
+                    <div className="row payment-status-row-4">
+                      <p>Want to login using another account? Click on the button below to logout and login with another
+                        account</p>
+                      <div className="row cancel">
+                        <button
+                          type="button"
+                          className="button full"
+                          onClick={this.logout}
+                        >
+                          Logout
+                        </button>
+                      </div>
+                    </div>
+                  </>
                 )}
               </div>
             </form>
@@ -847,9 +876,23 @@ class BuyPlan extends React.Component {
       orgSlug,
       setUserData,
       userData,
-      false,
+      true,
       redirectToStatus,
     );
+  };
+
+  connectToInternet = () => {
+    const {orgSlug, setUserData, userData, navigate} =
+      this.props;
+    const redirectToStatus = (statusUrl = `/${orgSlug}/status`) =>
+      navigate(statusUrl);
+    setUserData({
+      ...userData,
+      mustLogin: true,
+      method: "mpesa",
+      plan_changed: true,
+    });
+    redirectToStatus();
   };
 
 
@@ -996,11 +1039,11 @@ class BuyPlan extends React.Component {
                 your mpesa pin and click confirm</p>
 
 
-              <div className="row cancel">
-                <Link className="button full" to={statusPageUrl}>
-                  {t`CANCEL`}
-                </Link>
-              </div>
+              {/*<div className="row cancel">*/}
+              {/*  <Link className="button full" to={statusPageUrl}>*/}
+              {/*    Connect to the internet*/}
+              {/*  </Link>*/}
+              {/*</div>*/}
             </div>
 
             <Contact />
@@ -1051,39 +1094,6 @@ class BuyPlan extends React.Component {
         </div>
 
       </>
-    );
-  }
-
-
-  renderWaitingForPayment() {
-    const {userData, orgSlug} = this.props;
-    const {phone_number, order} = userData;
-    const {userplan} = userData;
-    const statusPageUrl = `/${orgSlug}/status`;
-
-    return (
-
-      <div className="text-center py-5">
-
-        <div className="mb-4">
-          <lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop"
-                     colors="primary:#25a0e2,secondary:#00bd9d"
-                     style={{width: "120px", height: "120px"}} />
-        </div>
-        <h5>You payment is being processed</h5>
-        <p className="text-muted">You will receive an notification on {phone_number} to pay your internet
-          plan. You will automatically have internet access once payment is successful.</p>
-
-        <h3 className="fw-semibold">Order
-          ID: {(userplan && userplan.active_order ? userplan.active_order.id : "N/A")}<a
-            className="text-decoration-underline" /></h3>
-        <div className="row cancel">
-          <Link className="button full" to={statusPageUrl}>
-            {t`CANCEL`}
-          </Link>
-        </div>
-      </div>
-
     );
   }
 

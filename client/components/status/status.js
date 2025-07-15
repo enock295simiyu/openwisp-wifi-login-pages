@@ -206,7 +206,7 @@ export default class Status extends React.Component {
         }
         this.notifyCpLogin(userData);
         this.loginFormRef.current.submit();
-
+        this.handleFinalRedirect();
         // window.location.replace('https://www.google.com/');
         // if user is already authenticated and coming from other pages
       } else if (!mustLogin) {
@@ -219,6 +219,15 @@ export default class Status extends React.Component {
     clearInterval(this.intervalId);
     window.removeEventListener("resize", this.updateScreenWidth);
   };
+
+  handleFinalRedirect() {
+    const {orgSlug, navigate} = this.props;
+    const {setLoading} = this.context;
+
+    setLoading(false);
+    navigate(`/${orgSlug}/success-redirect`);
+
+  }
 
   async mpesaFinalOperations() {
     const {userData, orgSlug, settings, navigate, setUserData} = this.props;
@@ -1000,10 +1009,10 @@ export default class Status extends React.Component {
                   </p>
                 ))}
 
-                <div className="row logout">
+                <div className="row logout cancel">
                   <input
                     type="button"
-                    className="button full"
+                    className="button full cancel"
                     value={t`LOGOUT`}
                     onClick={
                       rememberMe
