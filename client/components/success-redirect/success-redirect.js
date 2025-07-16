@@ -39,9 +39,16 @@ export default class SuccessRedirect extends React.Component {
       orgSlug,
     } = this.props;
     setTitle(t`SUCCESS_REDIRECT_TITL`, orgName);
-    setTimeout(() => {
-      window.location.replace(successRedirectUrl(orgSlug));
-    }, 3000);
+    // setTimeout(() => {
+    //   window.location.href=successRedirectUrl(orgSlug);
+    // }, 90000);
+
+    // setUserData(
+    //   {...userData,
+    //   redirect:true
+    //
+    //   }
+    // )
   }
 
   logout = () => {
@@ -71,6 +78,7 @@ export default class SuccessRedirect extends React.Component {
     setUserData({
       ...userData,
       mustLogin: false,
+      redirect: false,
     });
 
     const redirectToStatus = (statusUrl = `/${orgSlug}/status`) =>
@@ -79,7 +87,11 @@ export default class SuccessRedirect extends React.Component {
   };
 
   render() {
-    const {orgSlug} = this.props;
+    const {orgSlug, userData} = this.props;
+
+    if (!userData.redirect === false) {
+      window.location.assign(successRedirectUrl(orgSlug));
+    }
 
     return (
       <>

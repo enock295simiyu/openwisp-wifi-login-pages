@@ -206,7 +206,10 @@ export default class Status extends React.Component {
         }
         this.notifyCpLogin(userData);
         this.loginFormRef.current.submit();
-        this.handleFinalRedirect();
+        setUserData({
+          ...userData,
+          redirect: true,
+        });
         // window.location.replace('https://www.google.com/');
         // if user is already authenticated and coming from other pages
       } else if (!mustLogin) {
@@ -292,12 +295,19 @@ export default class Status extends React.Component {
       return;
     }
 
+    if (userData.redirect === true) {
+
+      this.handleFinalRedirect();
+    }
+
     // if everything went fine, load the user sessions
     await this.getUserActiveRadiusSessions();
     await this.getUserPassedRadiusSessions();
     this.intervalId = setInterval(() => {
       this.getUserActiveRadiusSessions();
     }, 60000);
+
+
     window.addEventListener("resize", this.updateScreenWidth);
     this.updateSpinner();
   }
@@ -348,9 +358,8 @@ export default class Status extends React.Component {
 
 
   async finalOperations() {
-    const {userData, orgSlug, settings, navigate, setUserData} = this.props;
+    const {userData, orgSlug, settings, navigate, setUserData, internetMode} = this.props;
     const {setLoading} = this.context;
-
 
     const {method} = userData;
     if (method === "mpesa" || !method) {
@@ -394,6 +403,7 @@ export default class Status extends React.Component {
     this.intervalId = setInterval(() => {
       this.getUserActiveRadiusSessions();
     }, 60000);
+    this.handleFinalRedirect();
     window.addEventListener("resize", this.updateScreenWidth);
 
     this.updateSpinner();
@@ -514,6 +524,7 @@ export default class Status extends React.Component {
     } = this.props;
 
     userData.mustLogin = false;
+    // userData.redirect=true;
     setUserData(userData);
 
     try {
