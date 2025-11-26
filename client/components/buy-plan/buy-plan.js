@@ -193,7 +193,7 @@ class BuyPlan extends React.Component {
         };
 
         this.webSocket.onerror = (error) => {
-          toast.error(error.toString());
+          logError(error);
         };
 
         this.webSocket.onclose = () => {
@@ -264,7 +264,7 @@ class BuyPlan extends React.Component {
           });
           if (response.data.active_order.payment_status === "waiting") {
 
-            this.intervalId = setInterval(this.getPaymentStatus, 20000);
+            this.intervalId = setInterval(this.getPaymentStatus, 15000);
           }
 
 
@@ -389,15 +389,20 @@ class BuyPlan extends React.Component {
           this.webSocket.close();
         }
         navigate(`/${orgSlug}/payment/${paymentStatus}`);
+        return;
 
       default:
-        return;
-      // Request failed
-      // toast.error(t`ERR_OCCUR`);
-      // setUserData({...userData, payment_url: null});
-      // this.setState({payment_id: null});
-      // clearInterval(this.intervalId);
-      // navigate(`/${orgSlug}/payment/failed`);
+
+        // Request failed
+        toast.error(t`ERR_OCCUR`);
+        setUserData({...userData, payment_url: null});
+        this.setState({payment_id: null, payment_status: null});
+        clearInterval(this.intervalId);
+        if (this.webSocket) {
+          this.webSocket.close();
+        }
+        navigate(`/${orgSlug}/payment/failed`);
+
 
     }
   };
@@ -992,7 +997,7 @@ class BuyPlan extends React.Component {
           payment_status: response.data.payment.status,
         });
         this.getPaymentStatusWs();
-        this.intervalId = setInterval(this.getPaymentStatus, 20000);
+        this.intervalId = setInterval(this.getPaymentStatus, 15000);
         setLoading(false);
         this.toggleTab(3);
         toast.info(response.data.payment.message);

@@ -5,8 +5,8 @@ class ReconnectingWebSocket {
     this.reconnectInterval = 1000; // Initial wait time before reconnecting (in ms)
     this.maxReconnectInterval = 30000; // Maximum wait time before reconnecting (in ms)
     this.reconnectDecay = 1.5; // Reconnect interval growth factor
-    this.reconnectAttempts = 0; // Number of reconnect attempts
-    this.maxReconnectAttempts = 10; // Maximum number of reconnect attempts
+    this.reconnectAttempts = 20; // Number of reconnect attempts
+    this.maxReconnectAttempts = 30; // Maximum number of reconnect attempts
     this.websocket = null; // The actual WebSocket connection
     this.shouldReconnect = true; // Whether to attempt reconnects or not
 

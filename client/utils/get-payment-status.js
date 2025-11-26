@@ -37,20 +37,11 @@ export const getPaymentStatus = async (orgSlug, paymentId, auth_token, ws_token)
 
 
     if (response.status === 200) {
-      if (response.data.message) {
-        if (response.data.status === "failed") {
-          toast.error(response.data.message);
-        } else {
-          toast.info(response.data.message);
-        }
-      }
+
       return {paymentStatus: response.data.status, paymentMessage: response.data.message};
     }
     const errorText = getErrorText(response);
 
-    if (errorText) {
-      toast.error(errorText);
-    }
     logError(response, "get-payment-status returned a non 200 response status");
     return {paymentStatus: "failed", paymentMessage: errorText};
   } catch (error) {
