@@ -10,6 +10,7 @@ import sendSessionCookies from "../utils/send-session-cookies";
 const payments = (req, res) => {
   const reqOrg = req.params.organization;
   const reqPaymentId = req.params.paymentId;
+  const searchQuery = req.query;
   const validSlug = config.some((org) => {
     if (org.slug === reqOrg) {
       // merge default config and custom config
@@ -35,6 +36,7 @@ const payments = (req, res) => {
       axios({
         method: "get",
         headers: requestHeaders,
+        params: searchQuery,
         url: `${host}${paymentUrl}/`,
         timeout,
       })

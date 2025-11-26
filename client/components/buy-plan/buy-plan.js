@@ -264,7 +264,7 @@ class BuyPlan extends React.Component {
           });
           if (response.data.active_order.payment_status === "waiting") {
 
-            this.intervalId = setInterval(this.getPaymentStatus, 30000);
+            this.intervalId = setInterval(this.getPaymentStatus, 20000);
           }
 
 
@@ -416,9 +416,9 @@ class BuyPlan extends React.Component {
     }
 
 
-    const paymentStatus = await getPaymentStatus(orgSlug, payment_id, userData.auth_token, ws_token);
-
-    await this.handlePaymentStatusChange(paymentStatus);
+    const {paymentStatus, paymentMessage} = await getPaymentStatus(orgSlug, payment_id, userData.auth_token, ws_token);
+    console.log("this is payment status", paymentStatus);
+    await this.handlePaymentStatusChange(paymentStatus, paymentMessage);
 
   };
 
@@ -992,7 +992,7 @@ class BuyPlan extends React.Component {
           payment_status: response.data.payment.status,
         });
         this.getPaymentStatusWs();
-        this.intervalId = setInterval(this.getPaymentStatus, 60000);
+        this.intervalId = setInterval(this.getPaymentStatus, 20000);
         setLoading(false);
         this.toggleTab(3);
         toast.info(response.data.payment.message);

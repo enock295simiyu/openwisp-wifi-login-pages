@@ -3,6 +3,7 @@ import {t} from "ttag";
 import {toast} from "react-toastify";
 import {paymentStatusUrl} from "../constants";
 import logError from "./log-error";
+import getErrorText from "./get-error-text";
 
 export const getPaymentStatus = async (orgSlug, paymentId, auth_token, ws_token) => {
   const url = paymentStatusUrl(orgSlug, paymentId);
@@ -33,6 +34,8 @@ export const getPaymentStatus = async (orgSlug, paymentId, auth_token, ws_token)
       },
       url,
     });
+
+
     if (response.status === 200) {
       if (response.data.message) {
         if (response.data.status === "failed") {
@@ -41,13 +44,22 @@ export const getPaymentStatus = async (orgSlug, paymentId, auth_token, ws_token)
           toast.info(response.data.message);
         }
       }
-      return response.data.status;
+      return {paymentStatus: response.data.status, paymentMessage: response.data.message};
+    }
+    const errorText = getErrorText(response);
+
+    if (errorText) {
+      toast.error(errorText);
     }
     logError(response, "get-payment-status returned a non 200 response status");
-    return false;
+    return {paymentStatus: "failed", paymentMessage: errorText};
   } catch (error) {
+
+    const errorText = getErrorText(error);
+
     logError(error, "get-payment-status returned a non 200 response status");
-    return false;
+    return {paymentStatus: "failed", paymentMessage: errorText};
+
   }
 };
 
@@ -59,6 +71,7 @@ const getPaymentStatusRedirectUrl = async (
   userData,
 ) => {
   const paymentStatus = await getPaymentStatus(orgSlug, paymentId, userData.auth_token);
+
   switch (paymentStatus) {
     case "waiting":
       return `/${orgSlug}/payment/draft`;
